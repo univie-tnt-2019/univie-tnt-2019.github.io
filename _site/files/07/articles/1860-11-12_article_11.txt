@@ -1,0 +1,5 @@
+#ID: 1860-11-12_article_11
+#DATE: 1860-11-12
+#TYPE: article
+#HEADER: The election in Texas.
+#TEXT: ;;; The election in Texas.   New Orleans, Nov. 11.;;; --The few returns received indicate that Texas has gone largely for Breckinridge.;;; 

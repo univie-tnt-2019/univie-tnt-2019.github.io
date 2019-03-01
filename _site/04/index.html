@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Citation management and academic writing II</title>
+
+  <meta name="author" content="Students of the Class" />
+
+  
+  <meta name="description" content="markdown, pandoc, LaTeX">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Citation management and academic writing II" />
+  
+
+   
+  <meta property="og:description" content="markdown, pandoc, LaTeX">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/04/" />
+  <link rel="canonical" href="http://localhost:4000/04/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Citation management and academic writing II" />
+  
+
+  
+  <meta name="twitter:description" content="markdown, pandoc, LaTeX">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost:4000">070146 KU Methodenkurs (2019S)</a>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Materials</a>
+            <div class="navlinks-children">
+              
+                
+                  
+
+
+
+
+
+
+<a href="/01">01. CM and AW I</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/02">02. Command Line</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/03">03. VC and Collaboration</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/04">04. CM and AW II</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/05">05. Georeferencing</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/06">06. RegEx</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/07">07. Webscraping</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/08">08. Text Markup [XML]</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/09">09. Structuring data</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/10">10. Text to Map (1/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/11">11. Text to Map (2/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/12">12. TM</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/13">13. SNA</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/about">Syllabus</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/resources">Resources</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Citation management and academic writing II</h1>
+		  
+		    
+            <hr class="small">
+            <span class="page-subheading">markdown, pandoc, LaTeX</span>
+			
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2 id="goals">Goals:</h2>
+
+<p>Introduction to sustainable academic writing that avoids any proprietary software solutions and formats</p>
+
+<h2 id="software">Software:</h2>
+
+<ul>
+  <li>pandoc (follow instructions on <a href="https://pandoc.org/installing.html">https://pandoc.org/installing.html</a>)</li>
+  <li>LaTeX engine (install from here: <a href="https://miktex.org/">https://miktex.org/</a>)</li>
+  <li>markdown</li>
+</ul>
+
+<h2 id="class-notes">Class Notes</h2>
+
+<p><em>Files</em>:</p>
+
+<ul>
+  <li><a href="../files/04/biblio.bib">biblio.bib</a></li>
+  <li><a href="../files/04/cms-fullnote.csl">cms-fullnote.csl</a></li>
+  <li><code class="highlighter-rouge">main.md</code> file: copy/paste the text from a section below into a <code class="highlighter-rouge">main.md</code> file. Make sure that the file is named exactly <code class="highlighter-rouge">main.md</code> (Windows tend to hide file extensions by default)</li>
+</ul>
+
+<p><strong>NB:</strong> remember that all files must be in the same folder; it makes sense to put folders into a subfolder (not to overcrowd your main folder), but then do not forget to change the path in your <code class="highlighter-rouge">image</code> code.</p>
+
+<p><em>TEXT for your <code class="highlighter-rouge">main.md</code> file.</em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: |
+    *From*: "Modeling: A Study in Words and Meanings" by Willard McCarty
+subtitle: 
+author: 
+date: \today
+bibliography: biblio.bib
+csl: cms-fullnote.csl
+---
+
+&gt;&gt; Out on site, you were never parted from your plans. They were your Bible. They got dog-eared, yellowed, smeared with mud, peppered with little holes from where you had unrolled them on the ground. But although so sacred, the plans were only the start. Once you got out there on the site everything was different. No matter how carefully done, the plans could not foresee the *variables*. It was always interesting, this moment when you saw for the first time the actual site rather than the idealised drawings of it.
+
+&gt;&gt; Kate Grenville, *The Idea of Perfection* (Sydney: Picador, 1999): 62–3
+
+
+# Introduction
+
+The question of modeling arises naturally for humanities computing from the prior question of what its practitioners across the disciplines have in common. What are they all doing with their computers that we might find in their diverse activities indications of a coherent or cohesible practice? How do we make the best, most productive sense of what we observe? There are, of course, many answers: practice varies from person to person, from project to project, and ways of construing it perhaps vary even more. In this chapter I argue for modeling as a model of such a practice. I have three confluent goals: to identify humanities computing with an intellectual ground shared by the older disciplines, so that we may say how and to what extent our field is of as well as *in* the humanities, how it draws from and adds to them; at the same time to reflect experience with computers "in the wild"; and to aim at the most challenging problems, and so the most intellectually rewarding future now imaginable.
+
+My primary concern here is, as Confucius almost said, that we use *the correct word* for the activity we share lest our practice go awry for want of understanding (*Analects 13.3*). Several words are on offer. By what might be called a moral philology I examine them, arguing for the most popular of these, "modeling." The nominal form, "model", is of course very useful and even more popular, but for reasons I will adduce, its primary virtue is that properly defined it defaults to the present participle, its semantic lemma. Before getting to the philology I discuss modeling in the light of the available literature and then consider the strong and learned complaints about the term.
+
+# Background
+
+Let me begin with provisional definitions[^1]. By "modeling" I mean *the heuristic process of constructing and manipulating models*, a "model" I take to be either *a representation of something for purposes of study*, or *a design for realizing something new*. These two senses follow Clifford Geertz's analytic distinction between a denotative "model *of*" such as a grammar describing the features of a language, and an exemplary "model *for*" such as an architectural plan [@geertz_interpretation_2017, 93][^2]. In both cases, as the literature consistently emphasizes, a model is by nature a simplified and therefore fictional or idealized representation, often taking quite a rough-and-ready form: hence the term "tinker toy" model from physics, accurately suggesting play, relative crudity, and heuristic purpose [@cartwright_how_1984, 158]. By nature modeling defines a ternary relationship in which it mediates epistemologically, between modeler and modeled, researcher and data or theory and the world [@morgan_models_1999]. Since modeling is fundamentally relational, the same object may in different contexts play either role: thus, e.g., the grammar may function prescriptively, as a model for correct usage, the architectural plan descriptively, as a model of an existing style. The distinction also reaches its vanishing point in the convergent purposes of modeling: the model of exists to tell us that we do not know, the model for to give us what we do not yet have. Models *realize*.
+
+[^1]: My definitions reflect the great majority of the literature explicitly on modeling in the history and philosophy of the natural sciences, especially of physics. The literature tends to be concerned with the role of modeling more in formal scientific theory than in experiment. The close relationship between modeling and experimenting means that the rise of a robust philosophy of experiment since the 1980s is directly relevant to our topic; see [@hacking_stability_1988]. Quite helpful in rethinking the basic issues for the humanities are the writings from the disciplines other than physics, e.g., [@clarke_models_2015] on archaeology; on the social sciences, the essays by de Callatay, Mironesco, Burch, and Gardin in [@franck_explanatory_2011]. For interdisciplinary studies see Shanin (1972) and [@morgan_models_1999], esp. "Models as Mediating Instruments" (pp. 10–37).
+
+[^2]: Cf. Goodman's distinction between "denotative" and "exemplary" models, respectively (1976: 172–3); H. J. Groenewold's "more or less poor substitute" and "more or less exemplary ideal" (1960: 98). Similar distinctions are quite common in the literature.
+
+# Bibliography
+</code></pre></div></div>
+
+<p><em>Commands</em></p>
+
+<p><strong>NB</strong>: the commands below are from the tutorial on <em>Programming historian</em>, but they are, as we discovered today, are outdated and are not likely to work on your machines with the most recent version of <code class="highlighter-rouge">pandoc</code> and <code class="highlighter-rouge">LaTeX</code> (MikTex Package).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandoc -S -o main.pdf --filter pandoc-citeproc main.md
+pandoc -S -o main.html --filter pandoc-citeproc main.md
+pandoc -S -o main.docx --filter pandoc-citeproc main.md
+</code></pre></div></div>
+
+<p>The following commands, however, definitely work: I have tested them on a fresh installation on Windows. <em>NB:</em> On Windows, you may see a pop-up Windows from <code class="highlighter-rouge">MikTex</code> asking to download a missing package for <code class="highlighter-rouge">LaTeX</code>. This means that some package is missing and you need to download it (or several!). Uncheck a birdie to install all necessary packages at once. After that everything should work.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandoc -f markdown -t latex -o main.pdf --filter pandoc-citeproc main.
+md
+
+pandoc -f markdown -t html -o main.html --filter pandoc-citeproc main.
+md
+
+pandoc -f markdown -t docx -o main.docx --filter pandoc-citeproc main.
+md
+</code></pre></div></div>
+
+<p><strong>Comment:</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">-f</code> means “convert <code class="highlighter-rouge">from</code> a specific format”.</li>
+  <li><code class="highlighter-rouge">-t</code> means “convert <code class="highlighter-rouge">to</code> a specific format”.</li>
+</ul>
+
+<p>Thus, the whole command (say, the first one) reads as follows: <code class="highlighter-rouge">pandoc converts from (-f) markdown to (-t) latex, then outputs (-o) main.pdf, to which a ‘filter’ that processes citations (--filter pandoc-citeproc) is applied; and the file to which this all is applied is main.md</code></p>
+
+<h2 id="reference-materials">Reference Materials:</h2>
+
+<ul>
+  <li>Simpkin, Sarah. 2015. “Getting Started with Markdown.” Programming Historian, November. <a href="https://programminghistorian.org/lessons/getting-started-with-markdown">https://programminghistorian.org/lessons/getting-started-with-markdown</a>.</li>
+  <li>Tenen, Dennis, and Grant Wythoff. 2014. “Sustainable Authorship in Plain Text Using Pandoc and Markdown.” Programming Historian, March. <a href="https://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">https://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown</a>.</li>
+</ul>
+
+<h1 id="homework">Homework</h1>
+
+<ul>
+  <li>Convert a plain text paper into markdown and convert it with Pandoc into a PDF, MS Word, and HTML documents.
+    <ul>
+      <li>Plain text file for the task: <a href="/files/04/McCarty_Modeling.txt">McCarty_Modeling.txt</a></li>
+      <li>Use this PDF file as a guide for your formatting: <a href="/files/04/McCarty_Modeling.pdf">McCarty_Modeling.pdf</a></li>
+      <li>Bibliography: you should already have the bibliography for this text collected; you now simply need to export all the records from Zotero into BibTeX format, which works with markdown and pandoc.</li>
+      <li>Convert only the first 7 pages! You can skip up to 1/3 of bibliographical records, if you cannot find them online.</li>
+      <li>Alternatively, you can use excerpts from any of your papers: 7 pages minimum, 15 footnotes, 10 bibliography items.</li>
+    </ul>
+  </li>
+  <li>Github: publish HTML version on your website as a blogpost, with links to PDF and MS Word versions.</li>
+  <li>Codecademy’s <em>Learn Python, Unit 1-2</em>.</li>
+  <li>Github: publish the confirmation screenshot as a post on your new site.</li>
+</ul>
+
+	    
+        <div class="disqus-comments">
+	        <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'univie-tnt-2019';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
+</div>
+        </div>
+	        
+        <div class="staticman-comments">
+          
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:maxim.romanov@univie.ac.at" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Students of the Class
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000">univie-tnt-2019.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+  
+  </body>
+</html>

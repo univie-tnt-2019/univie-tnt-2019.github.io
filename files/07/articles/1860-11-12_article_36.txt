@@ -1,0 +1,5 @@
+#ID: 1860-11-12_article_36
+#DATE: 1860-11-12
+#TYPE: article
+#HEADER: NO HEADER
+#TEXT: ;;; Vote of New York City.;;; --The aggregate vote in New York city at the Presidential election was 96,726, of which 62,657 were cast for the Fusion and 33,069 for the Republican ticket; majority for the Fusion ticket 29,588.;;; 

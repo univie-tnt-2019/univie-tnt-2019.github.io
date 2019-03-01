@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Text to Map (1/2)</title>
+
+  <meta name="author" content="Students of the Class" />
+
+  
+  <meta name="description" content="Extracting & Preparing Geographical Data">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Text to Map (1/2)" />
+  
+
+   
+  <meta property="og:description" content="Extracting & Preparing Geographical Data">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/10/" />
+  <link rel="canonical" href="http://localhost:4000/10/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Text to Map (1/2)" />
+  
+
+  
+  <meta name="twitter:description" content="Extracting & Preparing Geographical Data">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost:4000">070146 KU Methodenkurs (2019S)</a>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Materials</a>
+            <div class="navlinks-children">
+              
+                
+                  
+
+
+
+
+
+
+<a href="/01">01. CM and AW I</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/02">02. Command Line</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/03">03. VC and Collaboration</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/04">04. CM and AW II</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/05">05. Georeferencing</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/06">06. RegEx</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/07">07. Webscraping</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/08">08. Text Markup [XML]</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/09">09. Structuring data</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/10">10. Text to Map (1/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/11">11. Text to Map (2/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/12">12. TM</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/13">13. SNA</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/about">Syllabus</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/resources">Resources</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Text to Map (1/2)</h1>
+		  
+		    
+            <hr class="small">
+            <span class="page-subheading">Extracting & Preparing Geographical Data</span>
+			
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 id="goals">Goals:</h1>
+
+<p>To learn how to map quantifiable data, for example, mentions of different geographical locations in a given text. The first step will involve: learning about techniques for 1) extracting geographical data from texts; and about 2) preparing necessary data for mapping.</p>
+
+<h2 id="examples-of-the-final-work">Examples of the final work:</h2>
+
+<ul>
+  <li><a href="https://maximromanov.github.io/2015/04-02.html">https://maximromanov.github.io/2015/04-02.html</a></li>
+  <li><a href="https://maximromanov.github.io/2014/08-23.html">https://maximromanov.github.io/2014/08-23.html</a> (<a href="https://vimeo.com/121887453">VIDEO</a>)</li>
+</ul>
+
+<h2 id="data-needed">Data needed</h2>
+
+<ul>
+  <li>Placename - to add a label to a map</li>
+  <li>Lat,Lon - to place a dot on a map</li>
+  <li>Frequency - to size a dot on a map</li>
+  <li>TimeParameter - if we want to visualize change over time</li>
+</ul>
+
+<h1 id="software--technologies">Software &amp; Technologies:</h1>
+
+<ul>
+  <li><code class="highlighter-rouge">python</code> (matching, reformatting, calculating frequencies)</li>
+</ul>
+
+<h1 id="class">Class:</h1>
+
+<p>Basic techniqies with for extracting geographical data usually include:</p>
+
+<ol>
+  <li><strong>HARD</strong>: NER (named-entity recognition): matching against a gazetteer (a dictionary of geographical names, or toponyms) to identify potential toponyms in a text; additional NLP (natural language processing) may be used to disambiguate matches.</li>
+  <li><strong>EASY</strong>-<em>ish</em>: Extracting toponyms from pre-tagged texts (<em>our case</em>)</li>
+</ol>
+
+<h2 id="step-1-extracting-relevant-data">Step 1. Extracting relevant data</h2>
+
+<h3 id="example">Example:</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;milestone</span> <span class="na">unit=</span><span class="s">"sentence"</span> <span class="na">n=</span><span class="s">"57"</span> <span class="nt">/&gt;</span>It is my firm opinion,
+substantiated by that of my family physician's, that
+<span class="nt">&lt;persName</span> <span class="na">n=</span><span class="s">"Baker,,,,,"</span> <span class="na">id=</span><span class="s">"n-0001.0000.00000.00014"</span>
+<span class="na">reg=</span><span class="s">"nearbymention:Baker,E.,E.,,"</span> <span class="na">authname=</span><span class="s">"baker,e.,e."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;surname</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Baker<span class="nt">&lt;/surname&gt;&lt;/persName&gt;</span>'s Premium
+Bitters is the best medicine now before the public for the
+above mentioned diseases. <span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;closer&gt;</span> <span class="nt">&lt;salute&gt;</span>Yours,
+most truly,<span class="nt">&lt;/salute&gt;</span> <span class="nt">&lt;signed&gt;&lt;persName</span> <span class="na">n=</span><span class="s">"Quarles,,P.,W.,J.,"</span>
+<span class="na">id=</span><span class="s">"n-0001.0000.00000.00015"</span> <span class="na">reg=</span><span class="s">"default:Quarles,P.,W.,J.,"</span>
+<span class="na">authname=</span><span class="s">"quarles,p.,w.,j."</span><span class="nt">&gt;&lt;foreName</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>P.<span class="nt">&lt;/foreName&gt;</span>
+<span class="nt">&lt;foreName</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>W.<span class="nt">&lt;/foreName&gt;</span>  <span class="nt">&lt;foreName</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>J.<span class="nt">&lt;/foreName&gt;</span>
+<span class="nt">&lt;surname</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Quarles<span class="nt">&lt;/surname&gt;&lt;/persName&gt;</span>.<span class="nt">&lt;/signed&gt;</span>
+<span class="nt">&lt;lb</span> <span class="nt">/&gt;</span> These Bitters can be had of all the <span class="nt">&lt;name&gt;</span>Druggists<span class="nt">&lt;/name&gt;</span>
+in this city and at every respectable <span class="nt">&lt;placeName</span> <span class="na">reg=</span><span class="s">"Drug Store"</span><span class="nt">&gt;</span>Drug
+Store<span class="nt">&lt;/placeName&gt;</span> in the <span class="nt">&lt;rs&gt;</span>State<span class="nt">&lt;/rs&gt;</span>. Orders filled promptly by
+addressing <span class="nt">&lt;lb</span> <span class="nt">/&gt;</span> <span class="nt">&lt;persName</span> <span class="na">n=</span><span class="s">"Baker,,E.,,,"</span> <span class="na">id=</span><span class="s">"n-0001.0000.00000.00016"</span>
+<span class="na">reg=</span><span class="s">"default:Baker,E.,,,"</span> <span class="na">authname=</span><span class="s">"baker,e."</span><span class="nt">&gt;&lt;foreName</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>
+E.<span class="nt">&lt;/foreName&gt;</span> <span class="nt">&lt;surname</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Baker<span class="nt">&lt;/surname&gt;&lt;/persName&gt;</span>,
+Proprietor, <span class="nt">&lt;lb</span> <span class="nt">/&gt;</span> <span class="nt">&lt;placeName</span> <span class="na">reg=</span><span class="s">"Richmond, Richmond, Virginia"</span>
+<span class="na">key=</span><span class="s">"tgn,7013964"</span> <span class="na">authname=</span><span class="s">"tgn,7013964"</span><span class="nt">&gt;</span>Richmond, Va.<span class="nt">&lt;/placeName&gt;</span>
+<span class="nt">&lt;lb</span> <span class="nt">/&gt;</span> oc <span class="nt">&lt;num</span> <span class="na">value=</span><span class="s">"30"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/num&gt;</span>--ts <span class="nt">&lt;/closer&gt;</span> <span class="nt">&lt;/div4&gt;</span>
+<span class="nt">&lt;/div3&gt;</span> 
+
+<span class="nt">&lt;div3</span> <span class="na">type=</span><span class="s">"advert"</span> <span class="na">n=</span><span class="s">"4"</span> <span class="na">org=</span><span class="s">"uniform"</span> <span class="na">sample=</span><span class="s">"complete"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;&lt;dateStruct</span> <span class="na">value=</span><span class="s">"1860--"</span> <span class="na">full=</span><span class="s">"yes"</span> <span class="na">authname=</span><span class="s">"1860"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;year</span> <span class="na">reg=</span><span class="s">"1860"</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>1860<span class="nt">&lt;/year&gt;&lt;/dateStruct&gt;</span>.--Fall
+and <span class="nt">&lt;rs</span> <span class="na">n=</span><span class="s">"winter goods"</span> <span class="na">type=</span><span class="s">"product"</span><span class="nt">&gt;</span>Winter Goods<span class="nt">&lt;/rs&gt;</span>.
+--<span class="nt">&lt;dateStruct</span> <span class="na">value=</span><span class="s">"1860--"</span> <span class="na">full=</span><span class="s">"yes"</span> <span class="na">authname=</span><span class="s">"1860"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;year</span> <span class="na">reg=</span><span class="s">"1860"</span> <span class="na">full=</span><span class="s">"yes"</span><span class="nt">&gt;</span>1860<span class="nt">&lt;/year&gt;&lt;/dateStruct&gt;</span>.
+<span class="nt">&lt;lb</span> <span class="nt">/&gt;</span>Great Rush for Bargains.<span class="nt">&lt;lb</span> <span class="nt">/&gt;</span>Tremendous Excitement.<span class="nt">&lt;/head&gt;</span> 
+
+</code></pre></div></div>
+
+<h3 id="toward-a-solution">Toward a Solution…</h3>
+
+<ul>
+  <li>Our general script can be modified accordingly: instead of removing XML tags, we can extract relevant information and create another CSV file, of the following format: <code class="highlighter-rouge">Placename, Frequency</code></li>
+  <li>Toponyms are described as <code class="highlighter-rouge">&lt;placeName reg="Richmond, Richmond, Virginia" key="tgn,7013964" authname="tgn,7013964"&gt;Richmond, Va.&lt;/placeName&gt;</code>
+    <ul>
+      <li>Not all <code class="highlighter-rouge">&lt;placeName ....&gt;</code> are the placenames that we need</li>
+      <li>We can use strings like <code class="highlighter-rouge">authname="tgn,7013964"</code> or <code class="highlighter-rouge">key="tgn,7013964"</code> to check if a result is a toponym; <strong>NB:</strong> try to figure out what <code class="highlighter-rouge">tgn</code> is and whether this can be helpful in any way.</li>
+      <li>What should go into <code class="highlighter-rouge">Placename</code>?</li>
+    </ul>
+  </li>
+  <li>Frequencies can be calculated with a <code class="highlighter-rouge">dictionary</code>, where keys are <code class="highlighter-rouge">Placename</code> and values are <code class="highlighter-rouge">Frequency</code>.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dicFreq</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listOfResults</span><span class="p">:</span>
+    <span class="c"># some additional code may be required here</span>
+    <span class="c">#   you might also want to filter out items of certain type:</span>
+    <span class="c">#   for example, exclude advertisement (which is likely to be local only)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dicFreq</span><span class="p">:</span>
+        <span class="n">dicFreq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dicFreq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="o">=</span> <span class="mi">1</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>Dictionary of frequencies can be then reformatted into a frequency list, which can be sorted by frequencies; one of the common techniques is usually to exclude low frequency values (for example those with frequencies 1; alternatively, relevant threshhold can be determined through a descriptive statistics method).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">resultsCSV</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dicFreq</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="c"># this will exclude items with frequency 1</span>
+        <span class="n">newVal</span> <span class="o">=</span> <span class="s">"</span><span class="si">%09</span><span class="s">d</span><span class="se">\t</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="c"># newVal will looks like: `000005486 TAB Richmond`</span>
+        <span class="n">resultsCSV</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span>
+
+<span class="n">resultsCSV</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">resultsCSV</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resultsCSV</span><span class="p">))</span> <span class="c"># will print out the number of items in the list</span>
+<span class="n">resultsToSave</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">resultsCSV</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Additional</strong>: Try to include all items and check how the results will differ (in terms of the number of toponyms/placenames). You can use <code class="highlighter-rouge">print(len(resultsCSV))</code> to get a quick count of results in the <code class="highlighter-rouge">resultsCSV</code> list.</li>
+</ul>
+
+<p><strong>NB:</strong> for the final map we will need also <em>time parameters</em>, so that we could visualize our data chronologically.</p>
+
+<h3 id="problem">Problem</h3>
+
+<p>Although we can collect data, it is not yet mappable. We need to create relevant data that would allow us to place our frequency information on a map. We need coordinates!</p>
+
+<h2 id="step-2-data-coordinates">Step 2. Data (coordinates)</h2>
+
+<ul>
+  <li>Download <code class="highlighter-rouge">US.zip</code> from <em>Geonames.org</em> (<a href="http://download.geonames.org/export/dump/">http://download.geonames.org/export/dump/</a>).</li>
+  <li>Important description of the data can be found here: <a href="http://download.geonames.org/export/dump/readme.txt">http://download.geonames.org/export/dump/readme.txt</a></li>
+</ul>
+
+<p>The next step is to find all relevant coordinates. We can write a script that will match our data vs. the data from <em>Geonames.org</em>. This can be done as follows:</p>
+
+<ul>
+  <li>create a <code class="highlighter-rouge">python dictionary (I)</code> from our frequency data, where <code class="highlighter-rouge">keys</code> are placenames, and <code class="highlighter-rouge">values</code>—the entire <code class="highlighter-rouge">TSV</code> record.</li>
+  <li>create another <code class="highlighter-rouge">python dictionary (II)</code> from <em>Geonames</em> data, where <code class="highlighter-rouge">keys</code> are also placenames and <code class="highlighter-rouge">values</code>—the entire <code class="highlighter-rouge">TSV</code> record; there are likely to be multiple records with the same placenames—how would you deal with those? (<em>Hint</em>: you do not want to overwrite one with another; in order to avoid that, you can save <code class="highlighter-rouge">values</code> as <code class="highlighter-rouge">lists</code>, and append new records if there are more than one).</li>
+  <li><strong>NB:</strong> you will need to consult <a href="http://download.geonames.org/export/dump/readme.txt">http://download.geonames.org/export/dump/readme.txt</a> in order to figure out what is what in that data file.</li>
+  <li>now, you can loop through <code class="highlighter-rouge">python dictionary (I)</code> and check if a <code class="highlighter-rouge">key (I)</code> exists in <code class="highlighter-rouge">python dictionary (II)</code>; if yes, than you can add records to a new variable where you would collect only relevant toponyms; you can then save these selected records and manually re-check them.</li>
+</ul>
+
+<h3 id="alternative-ways-of-collecting-coordinates">Alternative ways of collecting coordinates</h3>
+
+<ul>
+  <li>If you have a map of relevant area, you can georeference it and harvest coordinates from your georeferenced map; you can then also visualize your data on that very map, which might be a very nice touch visually.</li>
+  <li>As a last resort, you can always manually collect required coordinates, which, however, is the most time-consuming of doing this.</li>
+</ul>
+
+<h1 id="reference-materials">Reference Materials:</h1>
+
+<ul>
+  <li>Frequency list: Turkel, William J., and Adam Crymble. 2012. “Counting Word Frequencies with Python.” Programming Historian, July. <a href="https://programminghistorian.org/lessons/counting-frequencies">https://programminghistorian.org/lessons/counting-frequencies</a>.</li>
+  <li>Creating cartograms with R: <a href="https://maximromanov.github.io/2015/04-02.html">https://maximromanov.github.io/2015/04-02.html</a></li>
+  <li>D.Mimno, A. Jones, G. Crane. <em>Finding a Catalog</em>, <a href="https://www.academia.edu/158175/PDF">https://www.academia.edu/158175/PDF</a></li>
+</ul>
+
+<h1 id="homework-12-and-22">Homework (1/2 and 2/2):</h1>
+
+<ol>
+  <li>GISting the “Dispatch” II: Mapping geographical data from the “Dispatch”
+    <ul>
+      <li>Extract toponyms (place names) from the “Dispatch” (python)</li>
+      <li>Calculate their frequencies (python)</li>
+      <li>Add coordinates to those places (QGIS/python)
+        <ul>
+          <li><em>Hint</em>: you can create two lists 1) one with place names and their frequencies, 2) with place names and their coordinates; after that, you can merge them with python and generate a CSV file (placename, timeParameter, latitude, longitude, frequency) which can be used for creating a map in QGIS</li>
+        </ul>
+      </li>
+      <li>Map them in QGIS, using frequencies to size the markers on the map</li>
+    </ul>
+  </li>
+  <li>Describe the process in a blogpost and publish on your website (including screenshots).</li>
+</ol>
+
+
+	    
+        <div class="disqus-comments">
+	        <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'univie-tnt-2019';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
+</div>
+        </div>
+	        
+        <div class="staticman-comments">
+          
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:maxim.romanov@univie.ac.at" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Students of the Class
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000">univie-tnt-2019.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+  
+  </body>
+</html>

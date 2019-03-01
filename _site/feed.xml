@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>070146 KU Methodenkurs (2019S)</title>
+    <description>TNT—Tools &amp; Techniques for Digital Humanities</description>
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Post3 - Test markdown</title>
+        <description>
+          Each post also has a subtitle - 
+          Reproduced from: https://deanattali.com/beautiful-jekyll/ You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc. Here is some bold text...
+        </description>
+        <pubDate>Sun, 03 Feb 2019 00:00:00 -0800</pubDate>
+        <link>http://localhost:4000/2019-02-03-post3-test-markdown/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-02-03-post3-test-markdown/</guid>
+      </item>
+    
+      <item>
+        <title>Post 2 - Vienna</title>
+        <description>
+          The City of Music - 
+          Vienna (/viˈɛnə/, German: Wien, [viːn]) is the federal capital and largest city of Austria, and one of the nine states of Austria. Vienna is Austria’s primate city, with a population of about 1.9 million (2.6 million within the metropolitan area, nearly one third of Austria’s population), and its cultural, economic,...
+        </description>
+        <pubDate>Sat, 02 Feb 2019 00:00:00 -0800</pubDate>
+        <link>http://localhost:4000/2019-02-02-post2-vienna/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-02-02-post2-vienna/</guid>
+      </item>
+    
+      <item>
+        <title>Post 1 - Hello world!</title>
+        <description>
+          
+          This is just the very first blog post with only one paragraph of text.
+
+        </description>
+        <pubDate>Fri, 01 Feb 2019 00:00:00 -0800</pubDate>
+        <link>http://localhost:4000/2019-02-01-post1-hello-world/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-02-01-post1-hello-world/</guid>
+      </item>
+    
+  </channel>
+</rss>

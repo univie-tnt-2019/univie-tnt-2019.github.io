@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>“Off with the Interface!”</title>
+
+  <meta name="author" content="Students of the Class" />
+
+  
+  <meta name="description" content="Getting to know the command line">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="“Off with the Interface!”" />
+  
+
+   
+  <meta property="og:description" content="Getting to know the command line">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/02/" />
+  <link rel="canonical" href="http://localhost:4000/02/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="“Off with the Interface!”" />
+  
+
+  
+  <meta name="twitter:description" content="Getting to know the command line">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost:4000">070146 KU Methodenkurs (2019S)</a>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Materials</a>
+            <div class="navlinks-children">
+              
+                
+                  
+
+
+
+
+
+
+<a href="/01">01. CM and AW I</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/02">02. Command Line</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/03">03. VC and Collaboration</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/04">04. CM and AW II</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/05">05. Georeferencing</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/06">06. RegEx</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/07">07. Webscraping</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/08">08. Text Markup [XML]</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/09">09. Structuring data</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/10">10. Text to Map (1/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/11">11. Text to Map (2/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/12">12. TM</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/13">13. SNA</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/about">Syllabus</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/resources">Resources</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>“Off with the Interface!”</h1>
+		  
+		    
+            <hr class="small">
+            <span class="page-subheading">Getting to know the command line</span>
+			
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2 id="goals">Goals:</h2>
+
+<p>The knowledge of “command line” opens a whole new world of opportunities, as the number of interface-less programs and applications is significantly larger; command line also offers a more robust and direct controls over a computer. The main goal is to learn the basics of this indispensable tool.</p>
+
+<h2 id="software">Software:</h2>
+
+<ul>
+  <li>[Mac] Terminal (installed)</li>
+  <li>[Win] Powershell (should be installed)</li>
+  <li>[<em>optional</em>] <code class="highlighter-rouge">python</code> (install from: https://www.python.org/)</li>
+  <li>[<em>optional</em>] <code class="highlighter-rouge">r</code> (install from: https://www.r-project.org/)</li>
+</ul>
+
+<h2 id="class-files-programs-and-the-command-line">Class: Files, programs, and the command line</h2>
+
+<p>This is a primer to get you started on a few concepts:</p>
+
+<ul>
+  <li>What a <em>filesystem</em> is</li>
+  <li>How to run a program from the command line</li>
+  <li>What it means to run a program</li>
+  <li>How the computer knows what program to run</li>
+  <li>How to refer to a file from the command line</li>
+</ul>
+
+<h3 id="the-filesystem">The filesystem</h3>
+
+<p>All the files and programs on your computer are organized into folders; all these folders are in some other folders all the way down to your hard drive, which we call the <strong>root</strong> of your filesystem. Every hard drive, USB drive, DVD, and CD-ROM has its own filesystem.</p>
+
+<p>You normally look at the contents of your filesystem via the Finder (on Mac) or the Explorer (on Windows). Open a window there now.</p>
+
+<p>The Finder / Explorer window opens in some folder, which might be different depending on what computer operating system you’re using. But you’ll usually have a navigation bar to the left, that will let you go to different places. You see <em>folders</em>, also known as <em>directories</em>, and you might see <em>files</em> too.</p>
+
+<p>One thing that computer OSes like to hide from you is the fact that you have a home directory, where all your personal files and folders should live. This makes it easier for multiple users to use a single computer. You can find your home directory like this:</p>
+
+<ul>
+  <li>On <strong>Mac</strong>, select <code class="highlighter-rouge">Go</code> &gt; <code class="highlighter-rouge">Home</code> in the menu.</li>
+</ul>
+
+<p><img src="../img/classes/02/mac_finder.png" alt="" /></p>
+
+<ul>
+  <li>On <strong>Windows</strong>, click on <code class="highlighter-rouge">Local Drive (C:)</code>, then click on <code class="highlighter-rouge">Users</code>, then click on your login name.</li>
+</ul>
+
+<p><img src="../img/classes/02/windows_explorer.png" alt="" /></p>
+
+<p>You’ll see that your home directory has several folders in it already, that were created automatically for you when you first made a user account.</p>
+
+<p>Now how can you tell where you are, with respect to the root of your drive?</p>
+
+<ul>
+  <li>On Mac, select <code class="highlighter-rouge">View</code> &gt; <code class="highlighter-rouge">Show Path Bar</code> in the menu.</li>
+</ul>
+
+<p><img src="../img/classes/02/mac_path.png" alt="" /></p>
+
+<p>On Windows, look:</p>
+
+<p><img src="../img/classes/02/windows_path.png" alt="" /></p>
+
+<p>The Finder / Explorer will also show you where in your computer’s filesystem you are. This is called the path—it shows you the path you have to take from the root of your filesystem to the folder you are in.</p>
+
+<p>Now if you are on Windows, click on that bar and you’ll see something surprising.</p>
+
+<p><img src="../img/classes/02/windows_realpath.png" alt="" /></p>
+
+<p>This is your real path. The <code class="highlighter-rouge">C:\</code> is how Windows refers to the root of your filesystem. Also note that, even if your OS is not in English, the path may very well be!</p>
+
+<h2 id="getting-started-with-the-command-line">Getting started with the command line</h2>
+
+<p>Now that you have a hint of what is going on behind the scenes on your computer, let’s dive into the command line. Here is how you get there:</p>
+
+<ul>
+  <li>On Mac, look for a program called <code class="highlighter-rouge">Terminal.app</code></li>
+</ul>
+
+<p><img src="../img/classes/02/mac_terminal.png" alt="" /></p>
+
+<ul>
+  <li>On Windows, look for a program called <code class="highlighter-rouge">Powershell</code></li>
+</ul>
+
+<p><img src="../img/classes/02/windows_powershell.png" alt="" /></p>
+
+<p>By default, these shells open in your home directory. On Windows this is easy to see, but on Mac it is less clear—that is, until you know that this <code class="highlighter-rouge">~</code> thing is an alias for your home directory.</p>
+
+<h2 id="components-of-the-command-line">Components of the command line</h2>
+
+<p>The command line consists of a <em>prompt</em> where you type your commands, the <em>commands</em> and <em>arguments</em> that you type, and the <em>output</em> that results from those commands.</p>
+
+<p>The <em>prompt</em> is the thing that looks like (where <code class="highlighter-rouge">user</code> is your username):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MacBook-Pro:~ user$
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Users\user&gt;
+</code></pre></div></div>
+
+<p>You will never need to type the prompt. That means that, if you are noting down what we do in class for future reference, you should not copy this part!</p>
+
+<p>The prompt actually gives you a little bit of information.</p>
+
+<ul>
+  <li>On Mac, it has the name of the computer, followed by a <code class="highlighter-rouge">:</code>, followed by the directory where you are, followed by your username, with <code class="highlighter-rouge">$</code> at the end.</li>
+  <li>On Windows, it has <code class="highlighter-rouge">PS</code> for <code class="highlighter-rouge">PowerShell</code>, followed by the name of the drive (<code class="highlighter-rouge">C</code> for most of you), followed by a <code class="highlighter-rouge">:</code>, followed by the full path to where you are, with <code class="highlighter-rouge">&gt;</code> at the end.</li>
+</ul>
+
+<p>When you type a command, nothing happens until you press the <code class="highlighter-rouge">Return/Enter</code> key. Some commands have output (more text that appears after you press <code class="highlighter-rouge">Return/Enter</code>) and others don’t. You cannot run another command until the prompt is given again.</p>
+
+<p><strong>NOTE</strong>: From this point on, you will be running the commands that are run here!</p>
+
+<p>Let’s first make sure we are in our home directory by typing <code class="highlighter-rouge">cd ~</code>. For most of you this should change nothing, but now you know your first shell command. The <code class="highlighter-rouge">cd</code> stands for <code class="highlighter-rouge">change directory</code>, and what follows is the directory you want to go to.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~
+</code></pre></div></div>
+
+<p>Now let’s have a look around. The command to show what is in any particular directory is called ls, which stands for list. Try running it.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls
+</code></pre></div></div>
+
+<p>If you are on Windows, what you get will look more like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Users\user&gt; ls
+</code></pre></div></div>
+
+<p>You should then see something like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Verzeichnis: C:\Users\user
+
+
+Mode                LastWriteTime     Length Name
+----                -------------     ------ ----
+d----        23.02.2016     21:18            .oracle_jre_usage
+d-r--        23.02.2016     20:40            Contacts
+d-r--        23.02.2016     20:40            Desktop
+d-r--        23.02.2016     21:11            Documents
+d-r--        23.02.2016     21:16            Downloads
+d----        23.02.2016     21:24            exist
+d-r--        23.02.2016     20:40            Favorites
+d-r--        23.02.2016     20:40            Links
+d-r--        23.02.2016     20:40            Music
+d-r--        23.02.2016     20:40            Pictures
+d-r--        23.02.2016     20:40            Saved Games
+d-r--        23.02.2016     20:40            Searches
+d-r--        23.02.2016     20:40            Videos
+
+
+PS C:\Users\user&gt;
+</code></pre></div></div>
+
+<p>Now go into your documents folder and look around.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd Documents
+ls
+</code></pre></div></div>
+
+<p>How does this compare to what you see in the Finder / Explorer window, if you click on the Documents folder?</p>
+
+<p>Another important command, which tells you where you are at any given time, is <code class="highlighter-rouge">pwd</code>. This means print working directory. Try it now and see what you get.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pwd
+</code></pre></div></div>
+
+<p>If ever you get lost on the command line, <code class="highlighter-rouge">pwd</code> will always help you find your way.</p>
+
+<h2 id="file-paths-and-path-notations">File paths and path notations</h2>
+
+<p>By now you will have noticed that I’ve mentioned the <strong>path</strong> a few times, and that it seems to have something to do with this thing that <strong>pwd</strong> prints out. (And, most annoyingly, that it looks different on <code class="highlighter-rouge">Mac</code> and <code class="highlighter-rouge">Windows</code>) The bit of text that you get from <code class="highlighter-rouge">pwd</code> is what is called path notation, and it is very important that you learn it if you want to do anything with your own digital data. Here are some rules:</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">/</code> (or <code class="highlighter-rouge">\\</code> on Windows) separates folder names. So <code class="highlighter-rouge">Desktop/Video</code> means “the thing called Video inside the Desktop folder”.</li>
+  <li>The <code class="highlighter-rouge">/</code> all by itself refers to the base of your hard drive (usually <code class="highlighter-rouge">Macintosh HD</code> or <code class="highlighter-rouge">C:\</code>.)</li>
+  <li>The <code class="highlighter-rouge">~</code> refers to your home folder.</li>
+  <li>These things can be combined; <code class="highlighter-rouge">~/Documents</code> means “the Documents folder in my home folder.”</li>
+  <li>The <code class="highlighter-rouge">.</code> means “the current working directory”, i.e. what you would get if you ran the command <code class="highlighter-rouge">pwd</code>.</li>
+  <li>The <code class="highlighter-rouge">..</code> means “one directory back”—if <code class="highlighter-rouge">pwd</code> gives you <code class="highlighter-rouge">/Users/user</code>, then <code class="highlighter-rouge">..</code> means <code class="highlighter-rouge">/Users</code>.</li>
+  <li>If the path does not start with a <code class="highlighter-rouge">.</code> or a <code class="highlighter-rouge">/</code> or a <code class="highlighter-rouge">~</code>, then it will be assumed to start with a <code class="highlighter-rouge">./</code>, that is, “start from the current working directory.”</li>
+</ul>
+
+<p>Let’s wander around a bit. Before that download the zip file with the materials of the course: <a href="https://github.com/maximromanov/tnt_wien_spring2018/archive/master.zip">https://github.com/maximromanov/tnt_wien_spring2018/archive/master.zip</a>. Unzip it somewhere and go to that folder in your <code class="highlighter-rouge">Terminal</code> or <code class="highlighter-rouge">Powershell</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /path/to/the/folder/tnt_wien_spring2018
+pwd
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ./cd 02_CommandLine/
+pwd
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls
+</code></pre></div></div>
+
+<p>Try the following if you are on Mac</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -lh
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ..
+pwd
+</code></pre></div></div>
+
+<p><strong>NB:</strong> you can use <code class="highlighter-rouge">TAB</code> to autocomplete the path: type <code class="highlighter-rouge">ls</code> to see what folders are in <code class="highlighter-rouge">Documents</code>, then go to any one of them by typing <code class="highlighter-rouge">cd</code> (space) and then the first two letters &gt; after that use <code class="highlighter-rouge">TAB</code> and the name will be complete automatically.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd 05[TAB]
+pwd
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ../01[TAB]
+pwd
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls McCarty_Modeling.pdf
+cd ..
+</code></pre></div></div>
+
+<h2 id="command-line-arguments">Command line arguments</h2>
+
+<p>So far we have learned three commands: <code class="highlighter-rouge">cd</code>, <code class="highlighter-rouge">ls</code>, and <code class="highlighter-rouge">pwd</code>. These are useful for navigation, but we can run a lot more commands once we learn them, and have a need for them!</p>
+
+<p>What are we doing, exactly?</p>
+
+<ul>
+  <li>First word is the <code class="highlighter-rouge">command</code></li>
+  <li>All other words are the <code class="highlighter-rouge">arguments</code></li>
+  <li>Words <strong>must be</strong> separated by <code class="highlighter-rouge">spaces</code></li>
+</ul>
+
+<p><code class="highlighter-rouge">cd</code> is a command that expects an argument: the name of the directory you want to go to. But what if the name has a space in it?</p>
+
+<p><strong>NB:</strong> You may think of most commands as sentences with subject, predicate, and object (or multiple objects).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ./01_Zotero_Word/Green Eggs and Ham
+</code></pre></div></div>
+
+<p>What happened there?</p>
+
+<p>Well, we have a folder called <strong>Green Eggs and Ham</strong> in our example, and we tried to go there. But since the command line works with arguments, and since arguments are separated by space, the machine interpreted this as if we were saying “Change to the <code class="highlighter-rouge">./01_Zotero_Word/Green</code> folder, and then <code class="highlighter-rouge">Eggs</code>, <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">Ham</code>, whatever that means.” And it gave us an error, because we don’t have a folder called <code class="highlighter-rouge">Green</code> in our example.</p>
+
+<p>You can get around this. How you get around it depends on whether you’re on Windows or not. One way to get around it that should work both places is like this:</p>
+
+<p>On Windows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd './01_Zotero_Word/Green Eggs and Ham'
+</code></pre></div></div>
+
+<p>On Mac (you need to <em>escape</em> spaces by adding a <code class="highlighter-rouge">backslash</code> in front of them):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ./01_Zotero_Word/Green\ Eggs\ and\ Ham/
+</code></pre></div></div>
+
+<p><strong>NB:</strong> The easiest solution is to use <code class="highlighter-rouge">TAB</code> for autocomplete!</p>
+
+<h2 id="more-stuff">More stuff</h2>
+
+<p>With command line you can do everything that you became accustomed to be doing in a graphical interface of your favorite file manager. For example, you can <code class="highlighter-rouge">copy</code>, <code class="highlighter-rouge">move</code>, and <code class="highlighter-rouge">delete</code> files and folders</p>
+
+<p>You can use:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">mv</code> to move files</li>
+  <li><code class="highlighter-rouge">rm</code> (on Windows also: <code class="highlighter-rouge">del</code>) to delete files</li>
+  <li><code class="highlighter-rouge">cp</code> to copy files</li>
+</ul>
+
+<p>In all cases you need to state which files you want to <code class="highlighter-rouge">mv</code>, <code class="highlighter-rouge">rm</code>, or <code class="highlighter-rouge">cp</code>. In some cases you also need to point where you want to <code class="highlighter-rouge">mv</code> or <code class="highlighter-rouge">cp</code> your files.</p>
+
+<p><strong>NB:</strong> Syntax on <code class="highlighter-rouge">Mac</code> and <code class="highlighter-rouge">Windows</code> will vary slightly, but if you keep using <code class="highlighter-rouge">[TAB]</code> for autocompletion, there will be no different in the process of typing the command, so let’s try to do it this way.</p>
+
+<p>To start, let’s go to the root directory of our course materials (<code class="highlighter-rouge">/tnt_wien_spring2018/</code>). From there, let’s do the following:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd 01[TAB]
+ls
+cp Mc[TAB] Green[TAB]
+cd Green[TAB]
+ls
+</code></pre></div></div>
+
+<p><strong>NB:</strong> when you hit <code class="highlighter-rouge">[TAB]</code> after <code class="highlighter-rouge">Mc</code> you are not going to get the full autocomplete, because there are two files that start with <code class="highlighter-rouge">McCarty_Modeling</code>—one is <code class="highlighter-rouge">pdf</code> and another—<code class="highlighter-rouge">txt</code>. You will need to type one more letter <code class="highlighter-rouge">p</code> and then hit <code class="highlighter-rouge">[TAB]</code> again to get the file name that you need. Thus, the command can be transcribed as: <code class="highlighter-rouge">M[TAB]p[TAB]</code></p>
+
+<p>Now let’s <code class="highlighter-rouge">rm</code> (<em>delete</em>) the <code class="highlighter-rouge">McCarty_Modeling.pdf</code> from this folder, then go to the folder where we copied it, and then <code class="highlighter-rouge">mv</code> (<em>move</em>) it back to where it was in the first place.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm M[TAB]p[TAB]
+ls
+cd G[TAB]
+mv Mc[TAB] ../
+cd ..
+ls
+</code></pre></div></div>
+
+<p>Tada! The <code class="highlighter-rouge">McCarty_Modeling.pdf</code> should now be back where it was.</p>
+
+<h2 id="learning-more">Learning more</h2>
+
+<p>If you want to learn about new commands, try to <code class="highlighter-rouge">Google</code> that. Googling things like this is a very big part of being a DH scholar! You will most likely find your answers on <a href="https://stackoverflow.com/">https://stackoverflow.com/</a>, which will become your most frequented resource, if you embark on the DH path.</p>
+
+<h1 id="homework">Homework</h1>
+
+<ul>
+  <li>Work through a reference material on command line which is relevant to your operating system.</li>
+  <li>Register at Codecademy.com (<a href="https://www.codecademy.com">https://www.codecademy.com</a>), if you haven not already.</li>
+  <li>Complete Codecademy’s <em>Learn the Command Line</em>, Units 1-4 (free sections)</li>
+  <li>Email the screenshot with confirmation of completion.</li>
+</ul>
+
+	    
+        <div class="disqus-comments">
+	        <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'univie-tnt-2019';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
+</div>
+        </div>
+	        
+        <div class="staticman-comments">
+          
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:maxim.romanov@univie.ac.at" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Students of the Class
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000">univie-tnt-2019.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+  
+  </body>
+</html>

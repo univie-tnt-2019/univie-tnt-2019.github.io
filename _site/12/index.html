@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Topic Modeling with R</title>
+
+  <meta name="author" content="Students of the Class" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Topic Modeling with R" />
+  
+
+   
+  <meta property="og:description" content="# Goals: 1. Introduction to topic modeling, or how to classify texts by shared content (“topics”). # Software * `R` (install from ) * `RStudio` (install from ) * `Java` (install from here: ) # Files &amp; Scripts * The files are on Moodle. * R script can also be...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/12/" />
+  <link rel="canonical" href="http://localhost:4000/12/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Topic Modeling with R" />
+  
+
+  
+  <meta name="twitter:description" content="# Goals: 1. Introduction to topic modeling, or how to classify texts by shared content (“topics”). # Software * `R` (install from ) * `RStudio` (install from ) * `Java` (install from here: ) # Files &amp; Scripts * The files are on Moodle. * R script can also be...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost:4000">070146 KU Methodenkurs (2019S)</a>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Materials</a>
+            <div class="navlinks-children">
+              
+                
+                  
+
+
+
+
+
+
+<a href="/01">01. CM and AW I</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/02">02. Command Line</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/03">03. VC and Collaboration</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/04">04. CM and AW II</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/05">05. Georeferencing</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/06">06. RegEx</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/07">07. Webscraping</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/08">08. Text Markup [XML]</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/09">09. Structuring data</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/10">10. Text to Map (1/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/11">11. Text to Map (2/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/12">12. TM</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/13">13. SNA</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/about">Syllabus</a>
+
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/resources">Resources</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Topic Modeling with R</h1>
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 id="goals">Goals:</h1>
+
+<ol>
+  <li>Introduction to topic modeling, or how to classify texts by shared content (“topics”).</li>
+</ol>
+
+<h1 id="software">Software</h1>
+
+<ul>
+  <li><code class="highlighter-rouge">R</code> (install from <a href="https://www.r-project.org/">https://www.r-project.org/</a>)</li>
+  <li><code class="highlighter-rouge">RStudio</code> (install from <a href="https://www.rstudio.com/">https://www.rstudio.com/</a>)</li>
+  <li><code class="highlighter-rouge">Java</code> (install from here: <a href="https://java.com/en/download/">https://java.com/en/download/</a>)</li>
+</ul>
+
+<h1 id="files--scripts">Files &amp; Scripts</h1>
+
+<ul>
+  <li>The files are on Moodle.</li>
+  <li>R script can also be downloaded from <a href="/files/12/tm_script.zip">here</a></li>
+</ul>
+
+<h1 id="class">Class</h1>
+
+<ul>
+  <li>Basic explanations</li>
+  <li>Hands-on tutorial</li>
+</ul>
+
+<h1 id="topics">Topics</h1>
+
+<h2 id="example-1">Example 1</h2>
+
+<p><em>Thursday, March 27, 1862</em></p>
+
+<p><strong>LIGHT ARTILLERY</strong></p>
+
+<p>—I am authorized by the Governor of Virginia to raise a Company of Light Artillery for the war. All those desirous of enlisting in this the most effective arm of the service, would do well to call at once at the office of Johnson &amp; Guigon, Whig Building.</p>
+
+<p>Uniforms and subsistence furnished.</p>
+
+<p>A. B. GUIGON. mh 25—6t</p>
+
+<h2 id="example-2">Example 2</h2>
+
+<p><em>Wednesday, August 17, 1864</em></p>
+
+<p><strong>Royal Marriages.</strong></p>
+
+<p>—There is a story circulated in Germany, and some in Paris, that the match between the heir-apparent of the Imperial throne of Russia and the Princess Dagmar of Denmark having been definitively broken off, another is in the course of negotiation between His Imperial Highness and the Princess Helens of England.</p>
+
+<h2 id="example-3">Example 3</h2>
+
+<p><em>Monday, June 22, 1863</em></p>
+
+<p><strong>NEWS FROM EUROPE.</strong></p>
+
+<p>The steamship Scotia arrived at New York on Thursday from Europe, with foreign news to the 7th inst. The news is not important. The Confederate steamer Lord Clyde was searched by order of the British Government, but nothing contraband being found on board her she was permitted to sail. The Russians have been defeated near Grochoury by the Polish insurgents. The three Powers have sent an earnest note to Russia, asking for a representative Government, a general amnesty, and an immediate cessation of hostilities in Poland.</p>
+
+<h1 id="nb-before-you-start-running-the-script">NB: Before you start running the script!</h1>
+
+<p>Run the following lines in R (this will install all necessary packages):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"rstudioapi"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"readr"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"rJava"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"mallet"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"plyr"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h1 id="topic-modeling-script-windows-version">Topic Modeling Script (Windows Version)</h1>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="c1"># "Mining the Dispatch," seeks to explore and encourage exploration of the dramatic and often</span><span class="w">
+</span><span class="c1"># traumatic changes as well as the sometimes surprising continuities in the social and political</span><span class="w">
+</span><span class="c1"># life of Civil War Richmond. It uses as its evidence nearly the full run of the Richmond Daily</span><span class="w">
+</span><span class="c1"># Dispatch from the eve of Lincoln's election in November 1860 to the evacuation of the city in</span><span class="w">
+</span><span class="c1"># April 1865. It uses as its principle methodology topic modeling, a computational, probabilistic</span><span class="w">
+</span><span class="c1"># technique to uncover categories and discover patterns in and among texts. On this site you'll</span><span class="w">
+</span><span class="c1"># be able to view and generate graphs and charts that reveal some of the changing patterns in the</span><span class="w">
+</span><span class="c1"># topics that dominated the news during the Civil War in the capital of the Confederacy's</span><span class="w">
+</span><span class="c1"># newspaper of record.</span><span class="w">
+
+</span><span class="c1"># NB: Required files in a folder:</span><span class="w">
+</span><span class="c1"># dispatch_articles_for_tm_tabular.txt</span><span class="w">
+</span><span class="c1"># dispatch_articles_topic_model_advanced.R</span><span class="w">
+</span><span class="c1"># dispatch_issues_for_tm_stopwords_curated_outOf300.csv</span><span class="w">
+
+</span><span class="c1"># the following lines </span><span class="w">
+</span><span class="c1">#install.packages("rstudioapi")</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">rstudioapi</span><span class="p">)</span><span class="w">
+</span><span class="n">current_path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">getActiveDocumentContext</span><span class="p">()</span><span class="o">$</span><span class="n">path</span><span class="w"> 
+</span><span class="n">setwd</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">current_path</span><span class="p">))</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">getwd</span><span class="p">())</span><span class="w">
+
+</span><span class="c1">#############################################################################</span><span class="w">
+</span><span class="c1">################# Load Dispatch Articles (one "article" per row) ############</span><span class="w">
+</span><span class="c1">#############################################################################</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span><span class="w">
+</span><span class="n">dispatch.articles</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">"dispatch_articles_for_tm_tabular.txt"</span><span class="p">,</span><span class="w">
+                            </span><span class="n">header</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w">
+                            </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">dispatch.articles</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"words"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># save as R object</span><span class="w">
+</span><span class="c1">#saveRDS(dispatch.articles,file="dispatch_articles_for_tm_tabular.Rda")</span><span class="w">
+</span><span class="c1"># dispatch.articles &lt;- readRDS(file="dispatch_articles_for_tm_tabular.Rda")</span><span class="w">
+
+</span><span class="c1"># write.table(dispatch.articles[1:1000,], file = "dispatch_articles_for_tm_tabular_short.txt",</span><span class="w">
+</span><span class="c1">#             row.names=FALSE, na="", quote=FALSE, col.names=TRUE, sep="\t")</span><span class="w">
+
+</span><span class="c1">#############################################################################</span><span class="w">
+</span><span class="c1">################# MALLET: following http://www.themacroscope.org/?page_id=822</span><span class="w">
+</span><span class="c1">#############################################################################</span><span class="w">
+
+</span><span class="c1">#install.packages("rJava")</span><span class="w">
+</span><span class="c1">#install.packages("mallet")</span><span class="w">
+
+</span><span class="c1">#on Windows, mostly</span><span class="w">
+</span><span class="n">Sys.setenv</span><span class="p">(</span><span class="n">JAVA_HOME</span><span class="o">=</span><span class="s1">'C:/Program Files/Java/jre1.8.0_171'</span><span class="p">)</span><span class="w"> </span><span class="c1"># must be the path to Java on your PC</span><span class="w">
+</span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"JAVA_HOME"</span><span class="p">)</span><span class="w"> </span><span class="c1"># to check the current one</span><span class="w">
+</span><span class="c1"># Some other settings might be in need of correction, like memory</span><span class="w">
+</span><span class="n">options</span><span class="p">(</span><span class="n">java.parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"-Xmx8182m"</span><span class="p">)</span><span class="w">
+</span><span class="c1"># loading rJava after!</span><span class="w">
+</span><span class="c1"># rJava or mallet may not load, most likely reasons:</span><span class="w">
+</span><span class="c1"># - 1) need the explicit path to Java (line 50 above);</span><span class="w">
+</span><span class="c1"># - 2) both R and Java must be of the same type either 32 or 64 bit! (for R: check `Tools` &gt; `Global Options`)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">rJava</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">mallet</span><span class="p">)</span><span class="w">
+
+</span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dispatch.articles</span><span class="w">
+</span><span class="c1">#test = dispatch.articles[1:1000,] # comment this one out for full run</span><span class="w">
+
+</span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="o">$</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="p">)</span><span class="w">
+</span><span class="n">mallet.instances</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mallet.import</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">id</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">test</span><span class="o">$</span><span class="n">text</span><span class="p">,</span><span class="w">
+                                  </span><span class="s2">"./dispatch_issues_for_tm_stopwords_curated_outOf300.csv"</span><span class="p">,</span><span class="w"> </span><span class="c1"># file with stopwords</span><span class="w">
+                                  </span><span class="kc">FALSE</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">token.regexp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"[\\p{L}']+"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># NB: for saving results, especially if you make multiple runs, it makes </span><span class="w">
+</span><span class="c1">#     sense to save file results with appropriate suffixes that would allow</span><span class="w">
+</span><span class="c1">#     to differentiate among different versions of results for post-analysis</span><span class="w">
+</span><span class="c1">#     also, it may make sense to have a spot where you define all your parameters</span><span class="w">
+
+</span><span class="n">n.topics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">40</span><span class="w">
+</span><span class="n">alphaOptimizationMin</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="n">alphaOptimizationMax</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">50</span><span class="w">
+</span><span class="n">reiterate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="c1"># change to 100 for test run; 500 (of higher) for better results -- takes much longer</span><span class="w">
+</span><span class="n">maximization</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span><span class="w">
+
+</span><span class="c1"># in the file.suffix, you want to save all the parameters that you used for generating</span><span class="w">
+</span><span class="c1"># topic models, namely:</span><span class="w">
+</span><span class="c1"># - n.topics</span><span class="w">
+</span><span class="c1"># - alphaOptimization</span><span class="w">
+</span><span class="c1"># - repetitions / train</span><span class="w">
+</span><span class="c1">#  - maximization parameter (not sure what that one does...)</span><span class="w">
+
+</span><span class="n">file.prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"tm"</span><span class="p">,</span><span class="w"> </span><span class="n">n.topics</span><span class="p">,</span><span class="w"> </span><span class="s2">"_A"</span><span class="p">,</span><span class="w"> </span><span class="n">alphaOptimizationMin</span><span class="p">,</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w"> </span><span class="n">alphaOptimizationMax</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"_iter"</span><span class="p">,</span><span class="w"> </span><span class="n">reiterate</span><span class="p">,</span><span class="w"> </span><span class="s2">"_Max"</span><span class="p">,</span><span class="w"> </span><span class="n">maximization</span><span class="p">,</span><span class="w"> </span><span class="s2">"_"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># paste0(fileName, file.prefix, extension)</span><span class="w">
+
+</span><span class="c1"># Starting analysis</span><span class="w">
+
+</span><span class="n">topic.model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">MalletLDA</span><span class="p">(</span><span class="n">n.topics</span><span class="p">)</span><span class="w">
+</span><span class="n">topic.model</span><span class="o">$</span><span class="n">loadDocuments</span><span class="p">(</span><span class="n">mallet.instances</span><span class="p">)</span><span class="w">
+</span><span class="n">vocabulary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">topic.model</span><span class="o">$</span><span class="n">getVocabulary</span><span class="p">()</span><span class="w">
+</span><span class="n">word.freqs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mallet.word.freqs</span><span class="p">(</span><span class="n">topic.model</span><span class="p">)</span><span class="w">
+</span><span class="c1">#length(vocabulary)</span><span class="w">
+</span><span class="c1">#vocabulary[1:100]</span><span class="w">
+</span><span class="c1">#head(word.freqs)</span><span class="w">
+
+</span><span class="c1">#############################################################################</span><span class="w">
+</span><span class="c1"># stopwords: run if no stopword list is available ###########################</span><span class="w">
+</span><span class="c1"># stopwords = as.data.frame(word.freqs)</span><span class="w">
+</span><span class="c1"># stopwords = stopwords[with(stopwords, order(-term.freq)), ]</span><span class="w">
+</span><span class="c1"># stopwords = data.frame(stopwords$words)</span><span class="w">
+</span><span class="c1"># write.table(stopwords, file = "dispatch_issues_for_topic_model_stopwords_new.csv", row.names=FALSE, na="", quote=FALSE, col.names=TRUE, sep="\t")</span><span class="w">
+</span><span class="c1"># this is a full list/table, which needs to be trimmed manually #############</span><span class="w">
+</span><span class="c1">#############################################################################</span><span class="w">
+
+</span><span class="c1">#############################################################################</span><span class="w">
+</span><span class="c1"># The following three lines of code will take a while to run ################</span><span class="w">
+</span><span class="c1">### the higher VAL in topic.model$train(VAL), the longer it takes ###########</span><span class="w">
+</span><span class="c1">### the optimal seems to be 500; leave it overnight :) ######################</span><span class="w">
+</span><span class="c1">#############################################################################</span><span class="w">
+
+</span><span class="n">topic.model</span><span class="o">$</span><span class="n">setAlphaOptimization</span><span class="p">(</span><span class="n">alphaOptimizationMin</span><span class="p">,</span><span class="w"> </span><span class="n">alphaOptimizationMax</span><span class="p">)</span><span class="w">
+</span><span class="n">topic.model</span><span class="o">$</span><span class="n">train</span><span class="p">(</span><span class="n">reiterate</span><span class="p">)</span><span class="w"> </span><span class="c1">#initial: 200; the higher the number the longer it takes to finish</span><span class="w">
+</span><span class="c1"># with 200 iterations, and all issues (~1300), Total time is: 5 minutes 15 seconds</span><span class="w">
+</span><span class="c1"># with 500 iterations, and all articles (~140k): Total time: 11-12 minutes</span><span class="w">
+</span><span class="c1"># (on MacBook Pro, i7, 16Gb RAM)</span><span class="w">
+</span><span class="n">topic.model</span><span class="o">$</span><span class="n">maximize</span><span class="p">(</span><span class="n">maximization</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Continue analysis</span><span class="w">
+
+</span><span class="n">doc.topics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mallet.doc.topics</span><span class="p">(</span><span class="n">topic.model</span><span class="p">,</span><span class="w"> </span><span class="n">smoothed</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">normalized</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">topic.words</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mallet.topic.words</span><span class="p">(</span><span class="n">topic.model</span><span class="p">,</span><span class="w"> </span><span class="n">smoothed</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">normalized</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+
+</span><span class="n">topic.docs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">doc.topics</span><span class="p">)</span><span class="w">
+</span><span class="n">topic.docs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">topic.docs</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">rowSums</span><span class="p">(</span><span class="n">topic.docs</span><span class="p">)</span><span class="w">
+</span><span class="n">write.csv</span><span class="p">(</span><span class="n">topic.docs</span><span class="p">,</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"./"</span><span class="p">,</span><span class="w"> </span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"topics-docs-articles.csv"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Get a vector containing short names for the topics</span><span class="w">
+</span><span class="n">topics.labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">n.topics</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.label.length</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n.topics</span><span class="p">)</span><span class="w"> </span><span class="n">topics.labels</span><span class="p">[</span><span class="n">topic</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="n">mallet.top.words</span><span class="p">(</span><span class="n">topic.model</span><span class="p">,</span><span class="w"> </span><span class="n">topic.words</span><span class="p">[</span><span class="n">topic</span><span class="p">,],</span><span class="w"> </span><span class="n">num.top.words</span><span class="o">=</span><span class="n">topics.label.length</span><span class="p">)</span><span class="o">$</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s2">", "</span><span class="p">)</span><span class="w">
+</span><span class="c1">## cluster based on shared words</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">hclust</span><span class="p">(</span><span class="n">dist</span><span class="p">(</span><span class="n">topic.words</span><span class="p">)),</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="n">topics.labels</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#############################################################################</span><span class="w">
+</span><span class="c1"># this will save an image of the dendrogram #################################</span><span class="w">
+</span><span class="n">png</span><span class="p">(</span><span class="s2">"dendrogram_of_topics.png"</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="m">1500</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="m">1500</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">=</span><span class="m">200</span><span class="p">)</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">hclust</span><span class="p">(</span><span class="n">dist</span><span class="p">(</span><span class="n">topic.words</span><span class="p">)),</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="n">topics.labels</span><span class="p">)</span><span class="w">
+</span><span class="n">dev.off</span><span class="p">()</span><span class="w">
+</span><span class="c1">#############################################################################</span><span class="w">
+
+</span><span class="c1"># Get a vector containing longer names for the topics</span><span class="w">
+</span><span class="n">topics.labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">n.topics</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.label.length</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">15</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n.topics</span><span class="p">)</span><span class="w"> </span><span class="n">topics.labels</span><span class="p">[</span><span class="n">topic</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="n">mallet.top.words</span><span class="p">(</span><span class="n">topic.model</span><span class="p">,</span><span class="w"> </span><span class="n">topic.words</span><span class="p">[</span><span class="n">topic</span><span class="p">,],</span><span class="w"> </span><span class="n">num.top.words</span><span class="o">=</span><span class="n">topics.label.length</span><span class="p">)</span><span class="o">$</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s2">", "</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># have a look at keywords for each topic</span><span class="w">
+</span><span class="n">topics.labels</span><span class="w">
+
+</span><span class="c1"># write these to a file</span><span class="w">
+</span><span class="n">write.csv</span><span class="p">(</span><span class="n">topics.labels</span><span class="p">,</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"./"</span><span class="p">,</span><span class="w"> </span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"topics-labels-articles.csv"</span><span class="p">))</span><span class="w">
+</span><span class="n">topics.labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"./"</span><span class="p">,</span><span class="w"> </span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"topics-labels-articles.csv"</span><span class="p">),</span><span class="w">
+                          </span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="s1">'"'</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># create data.frame with columns as documents and rows as topics</span><span class="w">
+</span><span class="n">topic_docs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">topic.docs</span><span class="p">)</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">topic_docs</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">test</span><span class="o">$</span><span class="n">id</span><span class="w">
+
+</span><span class="c1"># Further analysis</span><span class="w">
+</span><span class="n">topics.docs.dates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">topic_docs</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># converting from factor to numeric</span><span class="w">
+</span><span class="n">indx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sapply</span><span class="p">(</span><span class="n">topics.docs.dates</span><span class="p">,</span><span class="w"> </span><span class="n">is.factor</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.docs.dates</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">topics.docs.dates</span><span class="p">[</span><span class="n">indx</span><span class="p">],</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+
+</span><span class="n">topics.docs.dates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">rownames</span><span class="p">(</span><span class="n">topics.docs.dates</span><span class="p">),</span><span class="w"> </span><span class="n">topics.docs.dates</span><span class="p">)</span><span class="w">
+</span><span class="c1"># ids are in topics.docs.dates[,1]</span><span class="w">
+</span><span class="c1"># topics are in topics.docs.dates$V+number</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">topics.docs.dates</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+
+
+</span><span class="c1"># JOIN TM TABLE WITH INITIAL DATA!</span><span class="w">
+</span><span class="n">topics.texts.stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.docs.dates</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">topics.texts.stats</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
+</span><span class="c1"># fixing some ID corruption (1864-02-10_article_96 becomes X1864.02.10_article_96)</span><span class="w">
+</span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="s2">"^X"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="s2">"\\."</span><span class="p">,</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w"> </span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="s2">"\\."</span><span class="p">,</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w"> </span><span class="n">topics.texts.stats</span><span class="o">$</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">topics.texts.stats</span><span class="p">,</span><span class="w"> </span><span class="n">dispatch.articles</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s2">"id"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># reading top samples of topics</span><span class="w">
+</span><span class="c1"># - rearrange the table for V40</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.texts.stats.complete</span><span class="p">[</span><span class="n">order</span><span class="p">(</span><span class="o">-</span><span class="n">topics.texts.stats.complete</span><span class="o">$</span><span class="n">V</span><span class="m">40</span><span class="p">),]</span><span class="w">
+</span><span class="c1"># - print out top 5 samples for V40</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="o">$</span><span class="n">text</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span><span class="w">
+
+</span><span class="c1"># saving</span><span class="w">
+</span><span class="n">write.table</span><span class="p">(</span><span class="n">topics.texts.stats.complete</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"./"</span><span class="p">,</span><span class="w"> </span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"topics_docs_dates.txt"</span><span class="p">),</span><span class="w">
+            </span><span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">na</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># if you have already run the TM process, you can load the results with the following line:</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"./"</span><span class="p">,</span><span class="w"> </span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"topics_docs_dates.txt"</span><span class="p">),</span><span class="w">
+                            </span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w">
+                            </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="c1"># save as R object</span><span class="w">
+</span><span class="c1">#saveRDS(topics.texts.stats.complete,file=paste0("./", file.prefix, "topics.texts.stats.complete.Rda"))</span><span class="w">
+</span><span class="c1"># read back R object</span><span class="w">
+</span><span class="c1">#topics.texts.stats.complete &lt;- readRDS(file=paste0("./", file.prefix, "topics.texts.stats.complete.Rda"))</span><span class="w">
+
+</span><span class="c1">####################################################################################################</span><span class="w">
+</span><span class="c1"># Plotting topics over time ########################################################################</span><span class="w">
+</span><span class="c1"># Visualization cookbook: http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</span><span class="w">
+</span><span class="c1">####################################################################################################</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># to graph topics over time the main table must be modified:</span><span class="w">
+</span><span class="c1"># - topic values must be summed up for each day</span><span class="w">
+</span><span class="c1"># -- remove unnecessary columns</span><span class="w">
+</span><span class="n">topics.texts.stats.cumulative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">topics.texts.stats.complete</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">))</span><span class="w">
+</span><span class="c1"># - focus on the period of the Civil War</span><span class="w">
+</span><span class="n">topics.texts.stats.cumulative</span><span class="o">$</span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">topics.texts.stats.cumulative</span><span class="o">$</span><span class="n">date</span><span class="p">)</span><span class="w">
+</span><span class="c1"># American Civil War: Apr 12, 1861 - May 13, 1865</span><span class="w">
+</span><span class="n">topics.texts.stats.cumulative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.texts.stats.cumulative</span><span class="p">[</span><span class="w">
+  </span><span class="n">which</span><span class="p">(</span><span class="n">topics.texts.stats.cumulative</span><span class="o">$</span><span class="n">date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1860-11-01"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w">
+          </span><span class="n">topics.texts.stats.cumulative</span><span class="o">$</span><span class="n">date</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1865-04-30"</span><span class="p">)),</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="c1"># calculating total sum of topics per each article</span><span class="w">
+</span><span class="n">topics.texts.stats.cumulative</span><span class="o">$</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowSums</span><span class="p">(</span><span class="n">topics.texts.stats.cumulative</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n.topics</span><span class="p">])</span><span class="w">
+
+</span><span class="c1"># Try numbers from 1 to 40 (or higher, if you changed the number of topics)</span><span class="w">
+
+</span><span class="n">topic.var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="w">
+</span><span class="n">plotting.data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.texts.stats.cumulative</span><span class="w">
+</span><span class="n">plotting.data.var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">plotting.data</span><span class="p">,</span><span class="w"> </span><span class="n">vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span><span class="w"> </span><span class="n">wt_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"V%d"</span><span class="p">,</span><span class="w"> </span><span class="n">topic.var</span><span class="p">))</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">plotting.data.var</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"var"</span><span class="p">)</span><span class="w">
+</span><span class="n">plotting.data.tot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">plotting.data</span><span class="p">,</span><span class="w"> </span><span class="n">vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span><span class="w"> </span><span class="n">wt_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"total"</span><span class="p">)</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">plotting.data.tot</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tot"</span><span class="p">)</span><span class="w">
+</span><span class="n">plotting.data.fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">plotting.data.var</span><span class="p">,</span><span class="w"> </span><span class="n">plotting.data.tot</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">plotting.data.fin</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="o">/</span><span class="n">tot</span><span class="o">*</span><span class="m">100</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="o">/</span><span class="n">tot</span><span class="o">*</span><span class="m">100</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"loess"</span><span class="p">,</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Topic "</span><span class="p">,</span><span class="n">topic.var</span><span class="p">,</span><span class="s2">" Over Time"</span><span class="p">),</span><span class="w">
+       </span><span class="n">subtitle</span><span class="o">=</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Topic Words:"</span><span class="p">,</span><span class="w"> </span><span class="n">topics.labels</span><span class="p">[</span><span class="n">topic.var</span><span class="p">,][</span><span class="m">2</span><span class="p">]),</span><span class="w">
+       </span><span class="n">caption</span><span class="o">=</span><span class="s2">"Source: Richmond Dispatch (Americal Civil War Period)"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="o">=</span><span class="s2">"Frequencies %"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># save the graph</span><span class="w">
+</span><span class="n">graph.name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"Topic_"</span><span class="p">,</span><span class="w"> </span><span class="n">topic.var</span><span class="p">,</span><span class="w"> </span><span class="s2">".png"</span><span class="p">)</span><span class="w">
+</span><span class="n">ggsave</span><span class="p">(</span><span class="n">graph.name</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Now print out a few top samples of a topic</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.texts.stats.complete</span><span class="p">[</span><span class="n">order</span><span class="p">(</span><span class="o">-</span><span class="n">topics.texts.stats.complete</span><span class="p">[,</span><span class="n">topic.var</span><span class="m">+1</span><span class="p">]),]</span><span class="w">
+</span><span class="n">topics.texts.stats.complete</span><span class="o">$</span><span class="n">text</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span><span class="w">
+
+</span><span class="c1">### GENERATE ALL GRAPHS IN A LOOP ###</span><span class="w">
+
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)){</span><span class="w">
+  </span><span class="n">topic.var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">
+  </span><span class="n">plotting.data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics.texts.stats.cumulative</span><span class="w">
+  </span><span class="n">plotting.data.var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">plotting.data</span><span class="p">,</span><span class="w"> </span><span class="n">vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span><span class="w"> </span><span class="n">wt_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"V%d"</span><span class="p">,</span><span class="w"> </span><span class="n">topic.var</span><span class="p">))</span><span class="w">
+  </span><span class="nf">names</span><span class="p">(</span><span class="n">plotting.data.var</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"var"</span><span class="p">)</span><span class="w">
+  </span><span class="n">plotting.data.tot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">plotting.data</span><span class="p">,</span><span class="w"> </span><span class="n">vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span><span class="w"> </span><span class="n">wt_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"total"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">names</span><span class="p">(</span><span class="n">plotting.data.tot</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tot"</span><span class="p">)</span><span class="w">
+  </span><span class="n">plotting.data.fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">plotting.data.var</span><span class="p">,</span><span class="w"> </span><span class="n">plotting.data.tot</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
+  
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">plotting.data.fin</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="o">/</span><span class="n">tot</span><span class="o">*</span><span class="m">100</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="o">/</span><span class="n">tot</span><span class="o">*</span><span class="m">100</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"loess"</span><span class="p">,</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Topic "</span><span class="p">,</span><span class="n">topic.var</span><span class="p">,</span><span class="s2">" Over Time"</span><span class="p">),</span><span class="w">
+         </span><span class="n">subtitle</span><span class="o">=</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Topic Words:"</span><span class="p">,</span><span class="w"> </span><span class="n">topics.labels</span><span class="p">[</span><span class="n">topic.var</span><span class="p">,][</span><span class="m">2</span><span class="p">]),</span><span class="w">
+         </span><span class="n">caption</span><span class="o">=</span><span class="s2">"Source: Richmond Dispatch (Americal Civil War Period)"</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="o">=</span><span class="s2">"Frequencies %"</span><span class="p">)</span><span class="w">
+  
+  </span><span class="c1"># save the graph</span><span class="w">
+  </span><span class="n">graph.name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">file.prefix</span><span class="p">,</span><span class="w"> </span><span class="s2">"Topic_"</span><span class="p">,</span><span class="w"> </span><span class="n">topic.var</span><span class="p">,</span><span class="w"> </span><span class="s2">".png"</span><span class="p">)</span><span class="w">
+  </span><span class="n">ggsave</span><span class="p">(</span><span class="n">graph.name</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+
+
+
+</span></code></pre></div></div>
+
+<h2 id="visualization-of-topics-over-time">Visualization of topics over time</h2>
+
+<p><img src="../files/12/tm40_A20_50_iter100_Max10_Topic_1.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_2.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_3.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_4.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_5.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_6.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_7.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_8.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_9.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_10.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_11.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_12.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_13.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_14.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_15.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_16.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_17.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_18.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_19.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_20.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_21.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_22.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_23.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_24.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_25.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_26.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_27.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_28.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_29.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_30.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_31.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_32.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_33.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_34.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_35.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_36.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_37.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_38.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_39.png" alt="" />
+<img src="../files/12/tm40_A20_50_iter100_Max10_Topic_40.png" alt="" /></p>
+
+<h1 id="reference-materials">Reference Materials:</h1>
+
+<ul>
+  <li><em>On topic modeling</em>: Blei, David M. 2013. “Topic Modeling and Digital Humanities.” Journal of Digital Humanities. April 8, 2013. <a href="http://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/">http://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/</a>.</li>
+  <li><em>More on topic modeling</em>: Brett, Megan R. 2013. “Topic Modeling: A Basic Introduction.” Journal of Digital Humanities. April 8, 2013. <a href="http://journalofdigitalhumanities.org/2-1/topic-modeling-a-basic-introduction-by-megan-r-brett/">http://journalofdigitalhumanities.org/2-1/topic-modeling-a-basic-introduction-by-megan-r-brett/</a>.</li>
+  <li>Examples of topic modeling employed by historians:
+    <ul>
+      <li>Rob Nelson, Mining the Dispatch (<a href="http://dsl.richmond.edu/dispatch/">http://dsl.richmond.edu/dispatch/</a>)</li>
+      <li>Cameron Blevins, “Topic Modeling Martha Ballard’s Diary” Historying, 2010. (<a href="http://www.cameronblevins.org/posts/topic-modeling-martha-ballards-diary/">http://www.cameronblevins.org/posts/topic-modeling-martha-ballards-diary/</a>)</li>
+      <li>David J Newman and Sharon Block, “Probabilistic topic decomposition of an eighteenth century American newspaper,” Journal of the American Society for Information Science and Technology vol. 57, no. 6 (April 1, 2006): 753-767.</li>
+    </ul>
+  </li>
+  <li><em>Alternative way to run topic modeling</em>: Graham, Shawn, Scott Weingart, and Ian Milligan. 2012. “Getting Started with Topic Modeling and MALLET.” Programming Historian, September. <a href="https://programminghistorian.org/lessons/topic-modeling-and-mallet">https://programminghistorian.org/lessons/topic-modeling-and-mallet</a>.</li>
+</ul>
+
+<h1 id="homework">Homework:</h1>
+
+<ol>
+  <li>Topic modeling the “Dispatch”: using the provided R-script, run topic modeling on the “Dispatch”.</li>
+  <li>Change the number of topics to 30 and compare new results with the results for 40 topics. Record your observations.</li>
+  <li>Publish your observations as a blogpost on your website; compare your results with those of Rob Nelson’s <em>Mining the Dispatch</em> (<a href="http://dsl.richmond.edu/dispatch/">http://dsl.richmond.edu/dispatch/</a>).</li>
+</ol>
+
+	    
+        <div class="disqus-comments">
+	        <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'univie-tnt-2019';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
+</div>
+        </div>
+	        
+        <div class="staticman-comments">
+          
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:maxim.romanov@univie.ac.at" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Students of the Class
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000">univie-tnt-2019.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+  
+  </body>
+</html>
