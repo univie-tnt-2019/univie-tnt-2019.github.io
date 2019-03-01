@@ -5,6 +5,8 @@ subtitle: DH Tools & Techniques (S2019)
 ---
 
 
+- Relevant tutorials:
+	- Paul Vierthaler's (Uni Leiden) tutorials for Python on [YouTube](https://www.youtube.com/playlist?list=PL6kqrM2i6BPIpEF5yHPNkYhjHm-FYWh17)
 - Markdown:
 	- Learn markdown: <http://www.markdowntutorial.com/>
 - Jekyll:
