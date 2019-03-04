@@ -49,6 +49,9 @@ The final project is your website built in Jekyll and hosted on Github. Your web
 * <https://programminghistorian.org/lessons/>
 	* “Programming Historian” offers a number of tutorials for aspiring digital humanists. These will be assigned to you as reference materials. You also are encouraged to explore those tutorials that are not included into the course.
 
+* <https://www.youtube.com/playlist?list=PL6kqrM2i6BPIpEF5yHPNkYhjHm-FYWh17>
+	* Paul Vierthaler's “Hacking the Humanities Tutorials” (Python)
+
 # Software, Tools, & Technologies:
 
 The following is the list of software, applications and packages that we will be using in the course. Make sure to have them installed by the class when we are supposed to use them.
