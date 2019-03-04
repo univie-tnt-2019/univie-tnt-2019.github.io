@@ -1,3 +1,11 @@
+---
+layout: post
+title: Post 4 - Jupiter Notebooks
+subtitle: Testing Jupiter Notebooks in Jekyll
+bigimg: /img/vienna03.jpg
+tags: [images, text]
+---
+
 
 # NYU Abu Dhabi: Stylometry
 In this jupyter notebook I will cover the basics of performing stylometric analysis on a large collection of texts.

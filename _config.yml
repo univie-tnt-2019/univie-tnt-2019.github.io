@@ -23,7 +23,8 @@ description: TNT—Tools & Techniques for Digital Humanities
 
 # List of links in the navigation bar
 navbar-links:
-  Materials:
+  Syllabus: "about"
+  Lessons:
     - 01. CM and AW I: "01"
     - 02. Command Line: "02"
     - 03. VC and Collaboration: "03"
@@ -37,7 +38,6 @@ navbar-links:
     - 11. Text to Map (2/2): "11"
     - 12. TM: "12"
     - 13. SNA: "13"
-  Syllabus: "about"
   Resources: "resources"
 
 #Author's home: "http://deanattali.com"

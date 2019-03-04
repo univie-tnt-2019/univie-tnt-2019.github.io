@@ -48,6 +48,58 @@ Each class session will consist in large part of practical hands-on exercises le
 
 Just as in research and real life, collaboration is a very good way to learn and is therefore encouraged. If you need help with any assignment, you are welcome to ask a fellow student. If you do work together on homework assignments, then when you submit it please include a brief note (just a sentence or two) to indicate who did what.
 
+**NB:** On submitting homework, see below.
+
 # Final Project
 
 The final project is your website built in Jekyll and hosted on Github. Your website must have blogposts about all homework assignments. You are most welcome to work on this in groups, but every one will have to submit their own website.
+
+# Study materials:
+
+* <https://www.codecademy.com>
+	* Please, register at this website. You will be assigned to complete free versions of several courses on Codecademy:
+		* <https://www.codecademy.com/learn/learn-the-command-line>
+		* <https://www.codecademy.com/learn/learn-git> 
+		* <https://www.codecademy.com/learn/learn-python> 
+
+* <https://programminghistorian.org/lessons/>
+	* “Programming Historian” offers a number of tutorials for aspiring digital humanists. These will be assigned to you as reference materials. You also are encouraged to explore those tutorials that are not included into the course.
+
+# Software, Tools, & Technologies:
+
+The following is the list of software, applications and packages that we will be using in the course. Make sure to have them installed by the class when we are supposed to use them.
+
+* Zotero, <https://www.zotero.org/>
+* MS Word or Apache OpenOffice (you most likely already have one of these)
+* [Mac] Terminal / [Windows] Powershell (both are already on your machines)
+* Python <https://www.python.org/>
+* R <https://www.r-project.org/> and RStudio <https://www.rstudio.com/>
+* git and <https://github.com/>, version control system 
+* Jekyll (<https://jekyllrb.com/>), a simple, blog-aware, static site generator
+* pandoc (<https://pandoc.org/>), markdown, bibTex (bibliographical format for LaTeX)
+* QGIS, a Free and Open Source Geographic Information System (<https://qgis.org/en/site/>)
+* Regular expressions, EditPad Pro/Sublime Text
+* Wget (<https://www.gnu.org/software/wget/>), a free software package for retrieving files
+* [TEI] XML, csv/tsv, json, yml, etc.
+* Gephi (<https://gephi.org/>)
+
+# Submitting Homework:
+
+* Homework assignments are to be submitted by the beginning of the next class;
+* For the first few classes you must email them to the instructor (as attachments)
+* Later, you will be publishing your homework assignments on your websites.
+* For Codecademy.com assignments:
+	* take screenshots with your latest progress and email the image to the instructor.
+		* [Mac] Taking a screenshot: <https://support.apple.com/en-us/HT201361 >
+		* [Win] Taking a screenshot: <https://www.howtogeek.com/226280/how-to-take-screenshots-in-windows-10/>
+	* Later, you will be posting these progress screenshots on your websites.
+* DH is a collaborative field, so you are most welcome to work on your homework assignments in groups, however:
+	* You must still submit it. That is, if a groups of three works on one assignment, there must be three separate submissions: either emailed from each member’s email; or, later, published on each member’s website. 
+	* Codecademy.com assignments must be completed individually.
+
+
+
+# Syllabus (subject to minor changes)
+
+Please, see *Lessons* in the menue at the top of the page.
+
