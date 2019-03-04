@@ -16,22 +16,6 @@ subtitle: TNT Tools & Techniques for Digital Humanities
 * Meeting time: Tu 11:30-13:00
 * Meeting place: Hörsaal 29 Hauptgebäude, 1.Stock, Stiege 7
 
-# Schedule
-
-- ` Tu 05.03 - [ #01 ]` Citation Management and Academic Writing I
-- ` Tu 19.03 - [ #02 ]` “Off with the Interface!” Getting to know the command line
-- ` Tu 26.03 - [ #03 ]` Version Control and Collaboration
-- ` Tu 02.04 - [ #04 ]` Citation Management and Academic Writing II
-- ` Tu 09.04 - [ #05 ]` Georeferencing with QGIS
-- ` Tu 30.04 - [ #06 ]` Regular expressions
-- ` Tu 07.05 - [ #07 ]` Webscraping
-- ` Tu 14.05 - [ #08 ]` Text Markup [TEI XML], and how to remove it…
-- ` Tu 21.05 - [ #09 ]` Structuring data
-- ` Tu 28.05 - [ #10 ]` Text to Map (1/2)
-- ` Tu 04.06 - [ #11 ]` Text to Map (2/2)
-- ` Tu 18.06 - [ #12 ]` Topic modeling with R
-- ` Tu 25.06 - [ #13 ]` Social Network Analysis with Gephi
-
 # Aims, contents and method of the course
 
 The class will introduce the students to a variety of software tools and methods used in the Digital Humanities, primarily using the Python programming language. No prior programming experience is expected.
@@ -97,9 +81,21 @@ The following is the list of software, applications and packages that we will be
 	* You must still submit it. That is, if a groups of three works on one assignment, there must be three separate submissions: either emailed from each member’s email; or, later, published on each member’s website. 
 	* Codecademy.com assignments must be completed individually.
 
+# Schedule
 
+- ` Tu 05.03 - [ #01 ]` Citation Management and Academic Writing I
+- ` Tu 19.03 - [ #02 ]` “Off with the Interface!” Getting to know the command line
+- ` Tu 26.03 - [ #03 ]` Version Control and Collaboration
+- ` Tu 02.04 - [ #04 ]` Citation Management and Academic Writing II
+- ` Tu 09.04 - [ #05 ]` Georeferencing with QGIS
+- ` Tu 30.04 - [ #06 ]` Regular expressions
+- ` Tu 07.05 - [ #07 ]` Webscraping
+- ` Tu 14.05 - [ #08 ]` Text Markup [TEI XML], and how to remove it…
+- ` Tu 21.05 - [ #09 ]` Structuring data
+- ` Tu 28.05 - [ #10 ]` Text to Map (1/2)
+- ` Tu 04.06 - [ #11 ]` Text to Map (2/2)
+- ` Tu 18.06 - [ #12 ]` Topic modeling with R
+- ` Tu 25.06 - [ #13 ]` Social Network Analysis with Gephi
 
-# Syllabus (subject to minor changes)
-
-Please, see *Lessons* in the menue at the top of the page.
+Please, see *Lessons* in the menue at the top of the page for detailed information on each lesson.
 
