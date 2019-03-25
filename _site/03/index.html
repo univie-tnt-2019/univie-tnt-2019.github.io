@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-  <title>Version Control and Collaboration</title>
+  <title>L03 Version Control and Collaboration</title>
 
   <meta name="author" content="Students of the Class" />
 
@@ -60,7 +60,7 @@
   
 
   
-  <meta property="og:title" content="Version Control and Collaboration" />
+  <meta property="og:title" content="L03 Version Control and Collaboration" />
   
 
    
@@ -86,7 +86,7 @@
   <meta name="twitter:creator" content="@" />
 
   
-  <meta name="twitter:title" content="Version Control and Collaboration" />
+  <meta name="twitter:title" content="L03 Version Control and Collaboration" />
   
 
   
@@ -349,7 +349,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-heading">
-          <h1>Version Control and Collaboration</h1>
+          <h1>L03 Version Control and Collaboration</h1>
 		  
 		    
             <hr class="small">
@@ -372,21 +372,93 @@
 <div class="container" role="main">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <h1 id="general-workflow">General workflow:</h1>
+      <h1 id="goals">Goals</h1>
+
+<p>Learning about version control systems and how they help in the development of  DH project, which are often a lengthy and complex, and require organic collaboration.</p>
+
+<h1 id="software--other-required-materials">Software &amp; Other Required Materials</h1>
 
 <ul>
-  <li><a href="https://github.com/">github.com</a> :: make an account</li>
-  <li>download git software (Windows; Macs usually have it already)</li>
-  <li><code class="highlighter-rouge">fork</code> a repository</li>
-  <li><code class="highlighter-rouge">clone</code></li>
-  <li><em>work</em></li>
-  <li><code class="highlighter-rouge">add</code></li>
-  <li><code class="highlighter-rouge">commit</code></li>
-  <li><code class="highlighter-rouge">push</code> / <code class="highlighter-rouge">pull</code></li>
-  <li>send <code class="highlighter-rouge">pull request</code></li>
+  <li>Make sure to create a github account (<a href="https://github.com/">https://github.com/</a>), if you do not have one.</li>
+  <li>Download and install <code class="highlighter-rouge">git</code> software:
+    <ul>
+      <li>for Windows:
+        <ul>
+          <li>you can download it from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Please, choose <strong>64-bit Git for Windows Setup</strong>.</li>
+          <li>you can also install a portable version of <code class="highlighter-rouge">git</code> from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Please, chose <strong>64-bit Git for Windows Portable</strong>. Simply download and unzip (<em>Suggestion</em>: move that unzipped folder to the folder where you keep all class-related files and materials).</li>
+        </ul>
+      </li>
+      <li>for Mac: try to run <code class="highlighter-rouge">git --version</code> from Terminal. If <code class="highlighter-rouge">git</code> is not installed, you will be prompted to install <code class="highlighter-rouge">Xcode Command Line Tools</code> which comes with <code class="highlighter-rouge">git</code> among other things. This is the easiest way.</li>
+    </ul>
+  </li>
 </ul>
 
-<h1 id="some-command-line-commands">Some command line commands</h1>
+<h1 id="in-class">In Class</h1>
+
+<ul>
+  <li>Basic <code class="highlighter-rouge">git</code> functionality;</li>
+  <li>Starting a <code class="highlighter-rouge">github</code>-based website;</li>
+  <li>Basics of <code class="highlighter-rouge">markdown</code>;</li>
+</ul>
+
+<h2 id="general-git-workflow">General <code class="highlighter-rouge">git</code> workflow:</h2>
+
+<ul>
+  <li><em>In <code class="highlighter-rouge">Terminal</code> (on Mac) or <code class="highlighter-rouge">Git-Bash</code> (on Windows)</em>
+    <ul>
+      <li><code class="highlighter-rouge">fork</code> a repository</li>
+      <li><code class="highlighter-rouge">clone</code></li>
+      <li><em>work</em></li>
+      <li><code class="highlighter-rouge">add</code></li>
+      <li><code class="highlighter-rouge">commit</code></li>
+      <li><code class="highlighter-rouge">push</code> / <code class="highlighter-rouge">pull</code></li>
+      <li>send <code class="highlighter-rouge">pull request</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="main-git-commands">Main <code class="highlighter-rouge">git</code> Commands</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">git clone &lt;link&gt;</code>
+    <ul>
+      <li>clones/downloads a repository on you machine</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git status</code>
+    <ul>
+      <li>shows the current status of the repository (new, changed, deleted)</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git add .</code>
+    <ul>
+      <li>adds all new files and modified files to the repository</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git commit -m "message"</code>
+    <ul>
+      <li>saves all files in their current state into the repository, and created a milestone</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git push origin master</code>
+    <ul>
+      <li>uploads changes to <a href="https://github.com/">github.com</a></li>
+      <li><strong>NB:</strong> sometimes you may get an error, which in most cases means that you need to <code class="highlighter-rouge">pull</code> first</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git pull origin master</code>
+    <ul>
+      <li>downloads changes from <a href="https://github.com/">github.com</a></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git log</code>
+    <ul>
+      <li>shows the history of <code class="highlighter-rouge">commit</code>s; here you can choose where you want to roll back, in case of troubles</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="some-useful-command-line-commands">Some useful command line commands</h2>
 
 <ul>
   <li><code class="highlighter-rouge">pwd</code>
@@ -411,95 +483,32 @@
   </li>
 </ul>
 
-<h1 id="github-main-commands">GitHub: Main Commands</h1>
-
-<ul>
-  <li><code class="highlighter-rouge">git clone &lt;link&gt;</code>
-    <ul>
-      <li>clones/downloads a repository on you machine</li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">git status</code>
-    <ul>
-      <li>shows the current status of the repository (new, changed, deleted)</li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">git add .</code>
-    <ul>
-      <li>adds all new files and modified files to the repository</li>
-    </ul>
-  </li>
-  <li>`git commit -m “message”
-    <ul>
-      <li>saves all files in their current state into the repository, and created a milestone</li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">git push origin master</code>
-    <ul>
-      <li>uploads changes to <a href="https://github.com/">github.com</a></li>
-      <li><strong>NB:</strong> sometimes you may get an error, which in most cases means that you need to <code class="highlighter-rouge">pull</code> first</li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">git pull origin master</code>
-    <ul>
-      <li>downloads changes from <a href="https://github.com/">github.com</a></li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">git log</code>
-    <ul>
-      <li>shows the history of <code class="highlighter-rouge">commit</code>s; here you can choose where you want to roll back, in case of troubles</li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="from-the-syllabus">From the syllabus</h1>
-
-<h2 id="goals">Goals:</h2>
-
-<p>Learning about version control systems and how they help in the development of  DH project, which are often a lengthy and complex, and require organic collaboration.</p>
-
-<h2 id="software">Software:</h2>
-
-<ul>
-  <li>
-    <p>create github account @ https://github.com/</p>
-  </li>
-  <li>
-    <p>Github</p>
-    <ul>
-      <li>[Win] install from here: https://git-scm.com/downloads</li>
-      <li>[Mac] github is already on your machine</li>
-      <li>[Win] also install the desktop interface https://desktop.github.com/)</li>
-      <li>Jekyll, a simple, blog-aware, static site generator</li>
-      <li>see Reference Materials below on how to install</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="class">Class:</h2>
-
-<ul>
-  <li>Basic <code class="highlighter-rouge">git</code> functionality</li>
-  <li>Starting a website; basics of <code class="highlighter-rouge">markdown</code></li>
-</ul>
-
-<h2 id="reference-materials">Reference Materials:</h2>
+<h1 id="reference-materials">Reference Materials</h1>
 
 <ul>
   <li>Simpkin, Sarah. 2015. “Getting Started with Markdown.” Programming Historian, November. <a href="https://programminghistorian.org/lessons/getting-started-with-markdown">https://programminghistorian.org/</a>.</li>
   <li>Visconti, Amanda. 2016. “Building a Static Website with Jekyll and GitHub Pages.” Programming Historian, April. <a href="https://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages">https://programminghistorian.org/</a>.</li>
 </ul>
 
-<h2 id="homework">Homework:</h2>
+<h1 id="homework">Homework</h1>
 
 <ul>
-  <li>Build your website on github from the template at <a href="https://github.com/univie-tnt-2018-summer/univie-tnt-2018-summer.github.io">https://github.com/univie-tnt-2018-summer</a>
-    <ul>
-      <li><code class="highlighter-rouge">fork</code></li>
-      <li>create a repository under your account with the name: <code class="highlighter-rouge">username.github.io</code>, where username is your github username; the repository with such names are automatically treated by github as a website.</li>
-      <li>copy all files from the forked repository into your new one (<code class="highlighter-rouge">clone</code> &gt; <code class="highlighter-rouge">copy/paste</code>)</li>
-      <li>README.md has all the instructions on how to make modifications to your site; play with those!</li>
-      <li>you can pick a different theme for you site (just google <code class="highlighter-rouge">jekyll themes</code> for options)</li>
+  <li>Build your website on <github.com>.
+</github.com>    <ul>
+      <li>You can use this template <a href="https://github.com/daattali/beautiful-jekyll">https://github.com/daattali/beautiful-jekyll</a> (the page also includes step-by-step instructions; our course website is built with this theme).
+        <ul>
+          <li>You are encouraged to use other themes as well. Check, for example, <a href="https://jekyllthemes.io/">https://jekyllthemes.io/</a> or <a href="http://jekyllthemes.org/">http://jekyllthemes.org/</a>. Or, ask Google.</li>
+        </ul>
+      </li>
+      <li>Brief instructions (more details can be found in Visconti’s tutorial (see above), and on the page of the suggested template)
+        <ul>
+          <li><code class="highlighter-rouge">fork</code></li>
+          <li>create a repository under your account with the name: <code class="highlighter-rouge">username.github.io</code>, where username is your github username; the repository with such names are automatically treated by github as a website.</li>
+          <li>copy all files from the forked repository into your new one (<code class="highlighter-rouge">clone</code> &gt; <code class="highlighter-rouge">copy/paste</code>)</li>
+          <li>README.md has all the instructions on how to make modifications to your site; play with those!</li>
+          <li>you can pick a different theme for you site (just google <code class="highlighter-rouge">jekyll themes</code> for options)</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>Complete Codecademy’s <em>Learn Git</em> <a href="https://www.codecademy.com/learn/learn-git">https://www.codecademy.com/learn/learn-git</a>;
@@ -508,8 +517,7 @@
     </ul>
   </li>
   <li>Publish your confirmation screenshot as a post on your new site;</li>
-  <li>Also, add a page with this confirmation to the shared (forked site) and send me <code class="highlighter-rouge">pull request</code></li>
-  <li>complete the markdown tutorial @ <a href="https://www.markdowntutorial.com/">https://www.markdowntutorial.com/</a>. This will help you to write pages on your website</li>
+  <li>Complete the markdown tutorial @ <a href="https://www.markdowntutorial.com/">https://www.markdowntutorial.com/</a>. This will help you to write pages on your website</li>
 </ul>
 
 
