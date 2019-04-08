@@ -7,6 +7,18 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>L05 Georeferencing with QGIS</title>
+        <description>
+          
+          Follow the link…
+
+        </description>
+        <pubDate>Mon, 01 Apr 2019 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2019-04-01-lesson05/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-04-01-lesson05/</guid>
+      </item>
+    
+      <item>
         <title>L04 Citation Management and Academic Writing</title>
         <description>
           Part II — markdown, pandoc, LaTeX - 

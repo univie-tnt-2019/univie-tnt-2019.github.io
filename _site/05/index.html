@@ -11,8 +11,6 @@
   <meta name="author" content="Students of the Class" />
 
   
-  <meta name="description" content="Session to be taught by María Vargha [Tuesday	17.04.	15:15 - 16:45	Seminarraum Geschichte 1 Hauptgebäude, 1.Stock, Stiege 10]">
-  
 
   <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
 
@@ -64,7 +62,7 @@
   
 
    
-  <meta property="og:description" content="Session to be taught by María Vargha [Tuesday	17.04.	15:15 - 16:45	Seminarraum Geschichte 1 Hauptgebäude, 1.Stock, Stiege 10]">
+  <meta property="og:description" content="# Goals: Introduction to “geographical information systems” (GIS) and some of the basics techniques. The focus will be mainly on how one can digitize an image of a map—the process of georeferencing—and extract useful geographical information from it. # Software: * QGIS, a Free and Open Source Geographic Information System...">
   
 
 
@@ -90,7 +88,7 @@
   
 
   
-  <meta name="twitter:description" content="Session to be taught by María Vargha [Tuesday	17.04.	15:15 - 16:45	Seminarraum Geschichte 1 Hauptgebäude, 1.Stock, Stiege 10]">
+  <meta name="twitter:description" content="# Goals: Introduction to “geographical information systems” (GIS) and some of the basics techniques. The focus will be mainly on how one can digitize an image of a map—the process of georeferencing—and extract useful geographical information from it. # Software: * QGIS, a Free and Open Source Geographic Information System...">
   
 
   
@@ -351,11 +349,6 @@
         <div class="page-heading">
           <h1>Georeferencing with QGIS</h1>
 		  
-		    
-            <hr class="small">
-            <span class="page-subheading">Session to be taught by María Vargha [Tuesday	17.04.	15:15 - 16:45	Seminarraum Geschichte 1 Hauptgebäude, 1.Stock, Stiege 10]</span>
-			
-		  
 		  
 		  
         </div>
@@ -387,8 +380,222 @@
 
 <ul>
   <li>Basics of QGIS</li>
-  <li>Basics of georeferencing</li>
+  <li>Basics of Georeferencing</li>
 </ul>
+
+<h1 id="projection-issues">Projection Issues</h1>
+
+<p><img src="/files/05/headGlobus.jpg" alt="US_eastStates_03.jpg" /></p>
+
+<p>See, <a href="https://en.wikipedia.org/wiki/List_of_map_projections">https://en.wikipedia.org/wiki/List_of_map_projections</a>.</p>
+
+<h1 id="a-digital-map-layers-of-goodness">A Digital Map: Layers of Goodness</h1>
+
+<p><img src="/files/05/maps_layers.jpg" alt="US_eastStates_03.jpg" /></p>
+
+<ul>
+  <li>Layers:
+    <ul>
+      <li>Analytical Layer</li>
+      <li>Our Data</li>
+      <li>Annotation/Legend</li>
+    </ul>
+  </li>
+  <li>Social Geography
+    <ul>
+      <li>Political Boundaries</li>
+      <li>Settlements, etc.</li>
+    </ul>
+  </li>
+  <li>Physical Geography
+    <ul>
+      <li>Types of surface</li>
+      <li>Continents / Coastal Line</li>
+      <li>Elevation profile</li>
+      <li>Rivers, Lakes, etc.</li>
+    </ul>
+  </li>
+  <li>Base Layer: Graticule</li>
+</ul>
+
+<h1 id="main-types-of-data-points-lines-polygons">Main Types of Data: Points, Lines, Polygons</h1>
+
+<ul>
+  <li>Analytical Layer
+    <ul>
+      <li>Our Data
+        <ul>
+          <li>Points:
+            <ul>
+              <li>item, x<strong>[1]</strong>, point(lat, lon)<strong>[2]</strong></li>
+            </ul>
+          </li>
+          <li>Lines:
+            <ul>
+              <li>item, x<strong>[1]</strong>, from(lat, lon)<strong>[2]</strong>, to(lat, lon)<strong>[2]</strong></li>
+            </ul>
+          </li>
+          <li>Polygons:
+            <ul>
+              <li>item, x, area(lat, lon; lat, lon; … lat, lon)<strong>[2]</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Annotation/Legend</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>[1]</strong> where x is a categorical parameter; <strong>[2]</strong> lat/lon: decimal coordinates (not DMS)</p>
+
+<h1 id="georeferencing">Georeferencing</h1>
+
+<p>QGIS must be installed and running. <em>Note:</em> Interfaces might differ from system to system; the same applies to different versions of QGIS. Before we proceed, you may want to add Google Layers. To Add Google maps layer: (on the left pane, <em>Browser</em>) XYZ &gt; New connection &gt; paste one of the following links (Source:  <a href="https://geogeek.xyz/how-to-add-google-maps-layers-in-qgis-3.html">https://geogeek.xyz/how-to-add-google-maps-layers-in-qgis-3.html</a>):</p>
+
+<ol>
+  <li><strong>Google Maps</strong>: https://mt1.google.com/vt/lyrs=r&amp;x={x}&amp;y={y}&amp;z={z}</li>
+  <li><strong>Google Satellite</strong>: http://www.google.cn/maps/vt?lyrs=s@189&amp;gl=cn&amp;x={x}&amp;y={y}&amp;z={z}</li>
+  <li><strong>Google Satellite Hybrid</strong>: https://mt1.google.com/vt/lyrs=y&amp;x={x}&amp;y={y}&amp;z={z}</li>
+  <li><strong>Google Terrain</strong>: https://mt1.google.com/vt/lyrs=t&amp;x={x}&amp;y={y}&amp;z={z}</li>
+  <li><strong>Google Roads</strong>: https://mt1.google.com/vt/lyrs=h&amp;x={x}&amp;y={y}&amp;z={z}</li>
+</ol>
+
+<p><strong>NB:</strong> Images of maps to work with below</p>
+
+<h2 id="step-by-step-instructions">Step-by-step instructions</h2>
+
+<ul>
+  <li>In your <code class="highlighter-rouge">XYZ Tiles</code>, double click on any Google layer that you added (or on OpenStreetMap)
+    <ul>
+      <li>A layer should be added to the main map (see, Layer pane)</li>
+    </ul>
+  </li>
+  <li>Open Georeferencer: <code class="highlighter-rouge">Raster</code> &gt; <code class="highlighter-rouge">Georeferencer</code>
+    <ul>
+      <li>if you do not see it there, it must be activated first:
+        <ul>
+          <li><code class="highlighter-rouge">Plugins</code> &gt; <code class="highlighter-rouge">Manage and Install Plugins...</code> &gt; [search for <em>georeferencer</em>], then tick a box against <strong>Georeferencer GDAL</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>In Georeferencer: <code class="highlighter-rouge">File</code> &gt; <code class="highlighter-rouge">Open Raster</code> (also the first button on the main panel)
+    <ul>
+      <li>Choose a file. Lets start with <em>US_eastStates_03.jpg</em> (this one has a grid, so it will be easier to process)</li>
+      <li>In <em>Coordinate Reference System Selector</em>, choose <strong>WGS 84 / Pseudo-Mercator</strong>, then clock <code class="highlighter-rouge">OK</code></li>
+    </ul>
+  </li>
+  <li>Open <code class="highlighter-rouge">Settings</code> &gt; <code class="highlighter-rouge">Transformation settings</code> (or click the yellow gears button)
+    <ul>
+      <li>Choose settings like on the screenshot below (you can also change <code class="highlighter-rouge">Compression</code> setting, which will generate a smaller map-image):
+<img src="/files/05/transfSettings.png" alt="US_eastStates_03.jpg" /></li>
+    </ul>
+  </li>
+  <li>Now, adding georeference points:
+<img src="/files/05/coordinates.png" alt="US_eastStates_03.jpg" />
+    <ul>
+      <li>If you have a grid, it is very easy: just type in coordinates</li>
+      <li>If you don’t, it is tricky: you need to find the same features on the image and on the map (for this, click on <code class="highlighter-rouge">From Map Canvas</code>)</li>
+    </ul>
+  </li>
+  <li><strong>[!!!]</strong> Ideally, if you know projection of the map, you only need a few points; this almost never happens, so, the more points you create, the more precisely your image will be georeferenced. This is easy when you have a grid.</li>
+  <li>When you are done with collecting points, click on <code class="highlighter-rouge">PLAY</code> button (green triangle)
+    <ul>
+      <li>The image of your georeferenced map should appear in the main window.</li>
+    </ul>
+  </li>
+  <li><strong>[!!!]</strong> Keep in mind that you add layers to your map and a layer on top may cover the layer below!</li>
+</ul>
+
+<p>In general, this procedure can be extremely helpful if:</p>
+
+<ul>
+  <li>you need to collect geographical information from historical maps</li>
+  <li>you want to use some historical map as the base layer for mapping your data</li>
+</ul>
+
+<h2 id="collecting-point-data-very-simple-way">Collecting Point Data (Very Simple Way)</h2>
+
+<ul>
+  <li>Create a CSV file; copy/paste the content from below (three lines of text!)</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>city,state,lon,lat,lon1,lat1
+New York,New York,-8234229.297,4970380.761,-8234229.297,4970380.761
+Philadelphia,Pennsylvania,-8368867.370,4858182.367,-8368867.370,4858182.367
+</code></pre></div></div>
+
+<ul>
+  <li>In QGIS, load this file by:
+    <ul>
+      <li><code class="highlighter-rouge">Layer</code> &gt; <code class="highlighter-rouge">Add Layer</code> &gt; <code class="highlighter-rouge">Add Delimited Text Layer</code></li>
+      <li>Settings should look like on the screenshor below
+        <ul>
+          <li>CSV (comma separated format)</li>
+          <li>Point coodinates (X field: <code class="highlighter-rouge">lon</code>; Y field: <code class="highlighter-rouge">lat</code>)</li>
+          <li>Geometry CRS: <code class="highlighter-rouge">EPSG:4325 - WGS 84 / Pseudo Mercator</code></li>
+          <li>(you will have only two lines of data, instead of five)</li>
+          <li>Make sure to click <code class="highlighter-rouge">Add</code> when you are done!
+<img src="/files/05/delimitedTextLayer.png" alt="US_eastStates_03.jpg" /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The layer is there, but we need to add labels to see the cities
+    <ul>
+      <li>Right-click on the layer &gt; Properties</li>
+      <li>On the tab <code class="highlighter-rouge">Labels</code> change the settings like on the screenshot below</li>
+      <li>Click <code class="highlighter-rouge">Apply</code>, then <code class="highlighter-rouge">OK</code>.
+<img src="/files/05/citiesLabels.png" alt="US_eastStates_03.jpg" /></li>
+    </ul>
+  </li>
+  <li>You should see two cities now on the map:
+    <ul>
+      <li>If nothing appears, try: Right-click on the layer &gt; Set CRS &gt; Set Layer CRS: Choose <code class="highlighter-rouge">WGS 84 / Pseudo-Mercator</code></li>
+    </ul>
+  </li>
+  <li>Now, we can use <code class="highlighter-rouge">Coordinate Capture</code> plugin to collect data from our georeferenced map:
+    <ul>
+      <li>If activated, coordinarte capture should be visible in lower right corner
+        <ul>
+          <li>To activate coordinate capture: <code class="highlighter-rouge">Plugins</code> &gt; <code class="highlighter-rouge">Manage and Install Plugins...</code> &gt; [search for <em>coordinate capture</em>], then tick a box against <strong>Coordinate Capture</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Collecting coordinates:
+    <ul>
+      <li>Keep the initial CSV open in some editor</li>
+      <li>In <code class="highlighter-rouge">Coordinate Capture</code>, click <em>Start capture</em>
+        <ul>
+          <li>Click on any point on the map &gt; coordinates of that location will appear in the plugin</li>
+          <li>Click <code class="highlighter-rouge">Copy to Clipboard</code></li>
+        </ul>
+      </li>
+      <li>Go back to the open CSV:
+        <ul>
+          <li>Add a new line:
+            <ul>
+              <li>Type the name of the city</li>
+              <li>Add comma and type the name of the state (alternatively, just add another comma)</li>
+              <li>Now, paste what you copied into Clipboard (this will add two sets of coordinates)</li>
+            </ul>
+          </li>
+          <li>Save the file</li>
+        </ul>
+      </li>
+      <li>Back in QGIS:
+        <ul>
+          <li>Switch the layer off and on: after that the newly-added city must appear on the map.</li>
+        </ul>
+      </li>
+      <li>Repeat, until all required data is collected.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/files/05/newCities.png" alt="US_eastStates_03.jpg" /></p>
 
 <h1 id="images-of-maps">Images of Maps</h1>
 
@@ -412,9 +619,9 @@
 <h1 id="homework">Homework:</h1>
 
 <ol>
-  <li>Georeference the map of the US during the Civil War;</li>
-  <li>Collect coordinates for place names from the map (into a CSV format: name, latitude, longitude).</li>
-  <li>Images of Maps are above</li>
+  <li>Georeference two of three offered maps of the US during the Civil War;</li>
+  <li>Collect coordinates for 20 place names from each map (into a CSV format: use the same structure as given above).</li>
+  <li>Prepare a blogpost on your website with screenshots of both maps and paste the content of your CSV files below each map.</li>
   <li>Codecademy’s <em>Learn Python</em>, Unit 3-4.</li>
   <li>Github: publish the confirmation screenshot as a post on your new site.</li>
 </ol>
