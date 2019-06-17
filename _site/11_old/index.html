@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>L11 Text to Map (2/2)</title>
+
+  <meta name="author" content="Students of the Class" />
+
+  
+  <meta name="description" content="Merging & Mapping">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="070146 KU Methodenkurs (2019S) - TNT—Tools & Techniques for Digital Humanities" href="/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="L11 Text to Map (2/2)" />
+  
+
+   
+  <meta property="og:description" content="Merging & Mapping">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/11_old/" />
+  <link rel="canonical" href="http://localhost:4000/11_old/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="L11 Text to Map (2/2)" />
+  
+
+  
+  <meta name="twitter:description" content="Merging & Mapping">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost:4000">070146 KU Methodenkurs (2019S)</a>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/about">Syllabus</a>
+
+          </li>
+        
+        
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Lessons</a>
+            <div class="navlinks-children">
+              
+                
+                  
+
+
+
+
+
+
+<a href="/01">01. CM and AW I</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/02">02. Command Line</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/03">03. VC and Collaboration</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/04">04. CM and AW II</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/05">05. Georeferencing</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/06">06. RegEx</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/07">07. Webscraping</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/08">08. Text Markup [XML]</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/09">09. Structuring data</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/10">10. Text to Map (1/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/11">11. Text to Map (2/2)</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/12">12. TM</a>
+
+                
+              
+                
+                  
+
+
+
+
+
+
+<a href="/13">13. SNA</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li>
+            
+
+
+
+
+
+
+<a href="/resources">Resources</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>L11 Text to Map (2/2)</h1>
+		  
+		    
+            <hr class="small">
+            <span class="page-subheading">Merging & Mapping</span>
+			
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 id="goals">Goals:</h1>
+
+<ol>
+  <li>To prepare data for mapping (final step)</li>
+  <li>Do simple mapping in <code class="highlighter-rouge">QGIS</code></li>
+</ol>
+
+<h1 id="solutions-to-text-to-map-11">Solutions to Text to Map 1/1</h1>
+
+<h2 id="collecting-all-toponyms">Collecting all toponyms</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">re</span><span class="p">,</span> <span class="n">os</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="s">"path/to/your/xml/files/"</span>
+
+<span class="n">topoDict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">def</span> <span class="nf">updateDic</span><span class="p">(</span><span class="n">dic</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="o">=</span> <span class="mi">1</span>
+    
+<span class="k">def</span> <span class="nf">collectTaggedToponyms</span><span class="p">(</span><span class="n">xmlText</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+    <span class="n">xmlText</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"</span><span class="err">\</span><span class="s">s+"</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">)</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'&lt;date value="([\d-]+)"'</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">count1</span><span class="p">,</span> <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r"&lt;placeName[^&lt;]+&lt;/placeName&gt;"</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">'tgn,'</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'reg="([^"]+)"'</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'reg="([^"]+)"'</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c">#print(t)</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'key="([^"]+)"'</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'key="([^"]+)"'</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c">#print(t)</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">reg</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">count1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">count2</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">keyNew</span> <span class="o">=</span> <span class="n">reg</span><span class="o">+</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">+</span><span class="n">key</span>
+                <span class="n">updateDic</span><span class="p">(</span><span class="n">topoDict</span><span class="p">,</span> <span class="n">keyNew</span><span class="p">)</span>
+<span class="c">##    if count1 &gt;= 0:</span>
+<span class="c">##        print("%s: %d out of %d toponyms misstagged." % (date, count1, count2))</span>
+
+
+<span class="k">def</span> <span class="nf">collectRawToponyms</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="n">lof</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">lof</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lof</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">lof</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"dltext"</span><span class="p">):</span> <span class="c"># fileName test        </span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source</span> <span class="o">+</span> <span class="n">f</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>                
+                <span class="n">collectTaggedToponyms</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">topoDict</span><span class="p">)</span>
+
+    <span class="n">freqList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">topoDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">:</span>
+            <span class="n">freqList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"</span><span class="si">%09</span><span class="s">d</span><span class="se">\t</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Number of unique items with freq at least </span><span class="si">%</span><span class="s">d: </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">thresh</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">freqList</span><span class="p">)))</span>
+
+    <span class="c"># Number of unique items with freq at least 1: 9246</span>
+    <span class="c"># Number of unique items with freq at least 2: 5388</span>
+    <span class="c"># Number of unique items with freq at least 3: 4062</span>
+    <span class="c"># Number of unique items with freq at least 4: 3344</span>
+    <span class="c"># Number of unique items with freq at least 5: 2932</span>
+
+    <span class="n">freqList</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">freqList</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"freqList.csv"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f9</span><span class="p">:</span>
+        <span class="n">f9</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">freqList</span><span class="p">)</span>
+        
+
+<span class="n">collectRawToponyms</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="results">Results</h3>
+
+<p><strong>NB:</strong> <code class="highlighter-rouge">\t</code> are replaced with ` » ` for readability</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000033872 &gt;&gt; richmond, richmond, virginia &gt;&gt; tgn,7013964
+000019113 &gt;&gt; united states &gt;&gt; tgn,7012149
+000011045 &gt;&gt; virginia, united states, north and central america &gt;&gt; tgn,7007919
+000008934 &gt;&gt; washington, district of columbia, united states &gt;&gt; tgn,7013962
+000006926 &gt;&gt; charleston, charleston, south carolina &gt;&gt; tgn,7013582
+000006537 &gt;&gt; united kingdom &gt;&gt; tgn,7002445
+000006387 &gt;&gt; virginia &gt;&gt; tgn,7007919
+000004064 &gt;&gt; kentucky &gt;&gt; tgn,7007255
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352
+000004062 &gt;&gt; petersburg, petersburg, virginia &gt;&gt; tgn,7014404
+...
+</code></pre></div></div>
+
+<h2 id="load-and-match">Load and Match</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">re</span><span class="p">,</span> <span class="n">os</span>
+
+<span class="k">def</span> <span class="nf">loadGeoData</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
+    <span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">d1</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">19</span><span class="p">:</span>
+
+                <span class="n">val</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">d1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s">", "</span><span class="o">+</span><span class="n">d1</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">d1</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">d1</span><span class="p">[</span><span class="mi">5</span><span class="p">]])</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="n">d1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
+                    <span class="n">dic</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dic</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">]</span>
+                
+    <span class="k">return</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+
+<span class="n">geoDataFile</span> <span class="o">=</span> <span class="s">"./US/US.csv"</span>
+<span class="n">geoData</span> <span class="o">=</span> <span class="n">loadGeoData</span><span class="p">(</span><span class="n">geoDataFile</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">processResults</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="n">newData</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">noResult</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">"NA"</span><span class="p">,</span> <span class="s">"NA"</span><span class="p">,</span> <span class="s">"NA"</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">d1</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s">","</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="n">d1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">","</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="n">d1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">geoData</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">geoData</span><span class="p">[</span><span class="n">test</span><span class="p">]:</span>
+                    <span class="n">newData</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">+</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">newData</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">+</span><span class="n">noResult</span><span class="p">)</span>
+            
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"matchedResults.csv"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f9</span><span class="p">:</span>
+        <span class="n">f9</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">newData</span><span class="p">))</span>
+
+<span class="n">processResults</span><span class="p">(</span><span class="s">"freqList.csv"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="some-data-comprehension-from-the-readme-file">Some data comprehension (from the <code class="highlighter-rouge">readme</code> file)</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The main 'geoname' table has the following fields :
+---------------------------------------------------
+0  geonameid         : integer id of record in geonames database
+1  name              : name of geographical point (utf8) varchar(200)
+2  asciiname         : name of geographical point in plain ascii ...
+3  alternatenames    : alternatenames, comma separated, ascii ...
+4  latitude          : latitude in decimal degrees (wgs84)
+5  longitude         : longitude in decimal degrees (wgs84)
+6  feature class     : see http://www.geonames.org/export/codes.html, char(1)
+7  feature code      : see http://www.geonames.org/export/codes.html, varchar(10)
+8  country code      : ISO-3166 2-letter country code, 2 characters
+9  cc2               : alternate country codes, comma separated, ...
+10 admin1 code       : fipscode (subject to change to iso code), ...
+11 admin2 code       : code for the second administrative division, ...
+12 admin3 code       : code for third level administrative division, varchar(20)
+13 admin4 code       : code for fourth level administrative division, varchar(20)
+14 population        : bigint (8 byte int) 
+15 elevation         : in meters, integer
+16 dem               : digital elevation model, srtm3 or gtopo30, ...
+17 timezone          : the iana timezone id (see file timeZone.txt) varchar(40)
+18 modification date : date of last modification in yyyy-MM-dd format
+</code></pre></div></div>
+
+<h3 id="results-1">Results</h3>
+
+<p><strong>NB:</strong> <code class="highlighter-rouge">\t</code> are replaced with ` » ` for readability</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, KY &gt;&gt; 36.68756 &gt;&gt; -88.80589
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, MD &gt;&gt; 39.29038 &gt;&gt; -76.61219
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; 34.43656 &gt;&gt; -78.44028
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; 35.95847 &gt;&gt; -80.45783
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; 36.14792 &gt;&gt; -80.52978
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, OH &gt;&gt; 39.84534 &gt;&gt; -82.60072
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, TN &gt;&gt; 35.98427 &gt;&gt; -83.05932
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NY &gt;&gt; 42.73535 &gt;&gt; -76.12576
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, VT &gt;&gt; 43.36035 &gt;&gt; -72.57315
+...
+</code></pre></div></div>
+
+<h3 id="processing-results-selecting-only-needed-matches">Processing results: <em>selecting only needed matches</em></h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, KY &gt;&gt; n &gt;&gt; 36.68756 &gt;&gt; -88.80589
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, MD &gt;&gt; y &gt;&gt; 39.29038 &gt;&gt; -76.61219
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; n &gt;&gt; 34.43656 &gt;&gt; -78.44028
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; n &gt;&gt; 35.95847 &gt;&gt; -80.45783
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NC &gt;&gt; n &gt;&gt; 36.14792 &gt;&gt; -80.52978
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, OH &gt;&gt; n &gt;&gt; 39.84534 &gt;&gt; -82.60072
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, TN &gt;&gt; n &gt;&gt; 35.98427 &gt;&gt; -83.05932
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, NY &gt;&gt; n &gt;&gt; 42.73535 &gt;&gt; -76.12576
+000004063 &gt;&gt; baltimore, baltimore independent city, maryland &gt;&gt; tgn,7013352 &gt;&gt; Baltimore, VT &gt;&gt; n &gt;&gt; 43.36035 &gt;&gt; -72.57315
+</code></pre></div></div>
+
+<h1 id="generating-mappable-data">Generating Mappable Data</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span><span class="p">,</span> <span class="n">os</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="s">"/path/to/your/xml/files/"</span>
+
+<span class="n">topoDict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span> <span class="nf">updateDic</span><span class="p">(</span><span class="n">dic</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">loadMapLayer</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
+    <span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">d1</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">d1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s">"y"</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">d1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">d1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">d1</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">d1</span><span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+                <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+                
+    <span class="k">return</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+
+<span class="n">mapData</span> <span class="o">=</span> <span class="n">loadMapLayer</span><span class="p">(</span><span class="s">"matchedResults_curated.csv"</span><span class="p">)</span>
+   
+<span class="k">def</span> <span class="nf">collectTaggedToponyms</span><span class="p">(</span><span class="n">xmlText</span><span class="p">,</span> <span class="n">dic</span><span class="p">,</span> <span class="n">dateFilter</span><span class="p">):</span>
+    <span class="n">xmlText</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"</span><span class="err">\</span><span class="s">s+"</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">)</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'&lt;date value="([\d-]+)"'</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r"&lt;placeName[^&lt;]+&lt;/placeName&gt;"</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'"(tgn,\d+)'</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+            <span class="n">reg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'"(tgn,\d+)'</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">mapData</span><span class="p">:</span>
+                <span class="n">updateDic</span><span class="p">(</span><span class="n">topoDict</span><span class="p">,</span> <span class="n">mapData</span><span class="p">[</span><span class="n">reg</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">collectMappableLayers</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dateTest</span><span class="p">):</span>
+    <span class="n">lof</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">lof</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lof</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">lof</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"dltext"</span><span class="p">):</span> <span class="c"># fileName test        </span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source</span> <span class="o">+</span> <span class="n">f</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+                <span class="c"># date filter</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'&lt;date value="([\d-]+)"'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">dateTest</span><span class="p">):</span>
+                    <span class="n">collectTaggedToponyms</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">topoDict</span><span class="p">,</span> <span class="n">dateTest</span><span class="p">)</span>
+
+    <span class="n">freqList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">topoDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">:</span>
+            <span class="n">freqList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"</span><span class="si">%09</span><span class="s">d</span><span class="se">\t</span><span class="si">%</span><span class="s">s</span><span class="se">\t</span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">//</span><span class="mi">20</span><span class="p">))</span>
+
+    <span class="n">freqList</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">freqList</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"Dispatch_Geo_</span><span class="si">%</span><span class="s">s.csv"</span> <span class="o">%</span> <span class="n">dateTest</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f9</span><span class="p">:</span>
+        <span class="n">f9</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">freqList</span><span class="p">)</span>
+        
+
+<span class="n">collectMappableLayers</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">"1863"</span><span class="p">)</span>
+
+<span class="c"># Task: generate files for all years, all months, and all days</span>
+<span class="c"># - you can save results in subfolders;</span>
+<span class="c"># - or, better, in single files with dates in another column</span>
+
+</code></pre></div></div>
+
+<h1 id="maps-in-qgis">Maps in QGIS</h1>
+
+<p><strong>NB:</strong> In general, the following brief instructions should suffice; if you are confused, <em>google</em> it, or/and ask your comrades for help.</p>
+
+<ol>
+  <li>In QGIS:
+    <ul>
+      <li>Layer &gt;</li>
+      <li>Add Layer &gt;</li>
+      <li>Add Delimited Text Layer (need to point which columns are coordinates!)</li>
+      <li>Style your layer (size of circles, transparency, labels, etc.)</li>
+    </ul>
+  </li>
+  <li>In QGIS:
+    <ul>
+      <li>Use <code class="highlighter-rouge">QuickMapServices (QMS)</code> plugin to add a map layer quickly.</li>
+    </ul>
+  </li>
+  <li>In QGIS:
+    <ul>
+      <li>You can use <code class="highlighter-rouge">TimeManager</code> plugin to animate your maps over time.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="results-2">Results</h2>
+
+<p><img src="../img/11/dispatch_1862.png" alt="1862" /></p>
+
+<p><img src="../img/11/dispatch_1863.png" alt="1863" /></p>
+
+<p><img src="../img/11/dispatch_1864.png" alt="1864" /></p>
+
+<h1 id="reference-materials">Reference Materials:</h1>
+
+<ul>
+  <li>Frequency list: Turkel, William J., and Adam Crymble. 2012. “Counting Word Frequencies with Python.” Programming Historian, July. <a href="https://programminghistorian.org/lessons/counting-frequencies">https://programminghistorian.org/lessons/counting-frequencies</a>.</li>
+  <li>Creating cartograms with R: <a href="https://maximromanov.github.io/2015/04-02.html">https://maximromanov.github.io/2015/04-02.html</a></li>
+</ul>
+
+<h1 id="homework-12-and-22">Homework (1/2 and 2/2):</h1>
+
+<ol>
+  <li>GISting the “Dispatch” II: Mapping geographical data from the “Dispatch”
+    <ul>
+      <li>Extract toponyms (place names) from the “Dispatch” (python)</li>
+      <li>Calculate their frequencies (python)</li>
+      <li>Generate files for all years, all months, and all days (you can save results in subfolders, but, better, in single files with dates in another column)</li>
+      <li>Add coordinates to those places (QGIS/python)
+        <ul>
+          <li><em>Hint</em>: you can create two lists 1) one with place names and their frequencies, 2) with place names and their coordinates; after that, you can merge them with python and generate a CSV file (placename, timeParameter, latitude, longitude, frequency) which can be used for creating a map in QGIS</li>
+        </ul>
+      </li>
+      <li>Map them in QGIS, using frequencies to size the markers on the map</li>
+    </ul>
+  </li>
+  <li>Describe the process in a blogpost and publish on your website (including screenshots).
+    <ul>
+      <li>since you are provided with almost complete solutions here, you should do the following:
+        <ul>
+          <li>describe every line of code</li>
+          <li>provide alternative code (to the whole or parts), explain why you think yours is better</li>
+          <li>try to find errors, inefficiencies, or/and flaws in the offered solutions—this will give you extra points.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+	    
+        <div class="disqus-comments">
+	        <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'univie-tnt-2019';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
+</div>
+        </div>
+	        
+        <div class="staticman-comments">
+          
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:maxim.romanov@univie.ac.at" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Students of the Class
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000">univie-tnt-2019.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+  
+  </body>
+</html>

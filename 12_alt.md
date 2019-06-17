@@ -1,8 +1,8 @@
 ---
 layout: page
-title: L12 - Topic Modeling
-subtitle: with python & jupyter notebook
-tags: [text analysis, topic modeling, python, jupyter notebook]
+title: L12 Topic Modeling with R
+subtitle: 
+tags: [text analysis, topic modeling, R]
 comments: true
 ---
 
@@ -12,42 +12,19 @@ comments: true
 
 # Software
 
-* python
-* jupyter notebook
-* other python libraries
-
-## jupyter notebook
-
-From command line (in your working folder)
-
-``` bash
-
-# installing
-pip install jupyter
-
-# starting
-python notebook
-
-```
-
-## other libraries
-
-``` bash
-
-pip install ...
-
-```
+* `R` (install from <https://www.r-project.org/>)
+* `RStudio` (install from <https://www.rstudio.com/>)
+* `Java` (install from here: <https://java.com/en/download/>)
 
 # Files & Scripts
 
-* Dispatch CSV files
-* [Jupyter notebook](link)
+* The files are on Moodle.
+* R script can also be downloaded from [here](./files/12/tm_script.zip)
 
 # Class
 
 * Basic explanations
 * Hands-on tutorial
-
 
 # Topics
 

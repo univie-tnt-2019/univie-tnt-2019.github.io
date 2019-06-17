@@ -71,8 +71,8 @@
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://localhost:4000/06/" />
-  <link rel="canonical" href="http://localhost:4000/06/" />
+  <meta property="og:url" content="http://localhost:4000/2019-04-29-lesson06/" />
+  <link rel="canonical" href="http://localhost:4000/2019-04-29-lesson06/" />
   
 
   
@@ -348,15 +348,16 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-heading">
+        <div class="post-heading">
           <h1>L06 Regular Expressions</h1>
 		  
 		    
-            <hr class="small">
-            <span class="page-subheading">Constructing complex searches</span>
+			<h2 class="post-subheading">Constructing complex searches</h2>
 			
 		  
 		  
+		  
+		  <span class="post-meta">Posted on April 29, 2019</span>
 		  
         </div>
       </div>
@@ -369,81 +370,92 @@
 
 
 
-<div class="container" role="main">
+<div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <p><img src="https://imgs.xkcd.com/comics/regular_expressions.png" alt="image-center" class="align-left" /></p>
 
-<p class="text-center"><strong>Source</strong>: <a href="https://xkcd.com/208/">https://xkcd.com/208/</a>.</p>
+      
 
-<h1 id="goals">Goals:</h1>
+      <article role="main" class="blog-post">
+        <p><a href="../06">Follow the link…</a></p>
 
-<p>Introduction to <code class="highlighter-rouge">regular expressions</code>, an important semi-language for constructing searches.</p>
+      </article>
 
-<h1 id="software">Software:</h1>
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#re">re</a>
+          
+            <a href="/tags#regular expressions">regular expressions</a>
+          
+            <a href="/tags#regex">regex</a>
+          
+          
+        </div>
+      
 
-<ul>
-  <li>Any text editor supporting regular expressions:
-    <ul>
-      <li><a href="https://www.sublimetext.com/">Sublime Text</a> (both Mac and Windows)</li>
-      <li><a href="https://www.editpadpro.com/">EditPad Pro</a> and <a href="https://www.editpadlite.com/">Lite</a> (Windows only)</li>
-      <li>many other text editors for programmers support regular expressions.</li>
-    </ul>
-  </li>
-</ul>
+      
+        <!-- Check if any share-links are active -->
 
-<h1 id="class-materials">Class materials:</h1>
 
-<ul>
-  <li>Presentation with all the slides:
-    <ul>
-      <li><a href="https://github.com/maximromanov/re_tutorial/blob/master/RegularExpressions_Western.pdf?raw=true">PDF</a> (Windows PowerPoint Format)</li>
-    </ul>
-  </li>
-  <li>Practicum file (<code class="highlighter-rouge">Right Click &gt; Save File as ...</code>):
-    <ul>
-      <li><a href="https://raw.githubusercontent.com/maximromanov/re_tutorial/master/re_practucum_text_western.txt">version for training</a></li>
-      <li><a href="https://raw.githubusercontent.com/maximromanov/re_tutorial/master/re_practucum_text_western_answers.txt">version with answers</a></li>
-    </ul>
-  </li>
-</ul>
 
-<h1 id="digital-materials">Digital materials:</h1>
 
-<ul>
-  <li>Online references:
-    <ul>
-      <li><a href="http://www.regular-expressions.info/">http://www.regular-expressions.info/</a></li>
-      <li><a href="http://ruby.bastardsbook.com/chapters/regexes/">http://ruby.bastardsbook.com/chapters/regexes/</a></li>
-    </ul>
-  </li>
-  <li>Interactive tutorial: <a href="http://regexone.com/">http://regexone.com/</a></li>
-  <li>Cheat Sheets:
-    <ul>
-      <li><a href="http://krijnhoetmer.nl/stuff/regex/cheat-sheet/">http://krijnhoetmer.nl/stuff/regex/cheat-sheet/</a></li>
-      <li><a href="http://www.rexegg.com/regex-quickstart.html">http://www.rexegg.com/regex-quickstart.html</a></li>
-    </ul>
-  </li>
-</ul>
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
 
-<h1 id="reference-materials">Reference Materials:</h1>
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=L06+Regular+Expressions+http://localhost:4000/2019-04-29-lesson06/"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
 
-<ul>
-  <li>Goyvaerts, J. and Levithan, S. (2012). <em>Regular Expressions Cookbook</em>. Second edition. Beijing: O’Reilly. <a href="http://www.amazon.com/Regular-Expressions-Cookbook-Jan-Goyvaerts/dp/1449319432/">Amazon Link</a>.</li>
-  <li>Friedl, J. E. F. (2006). <em>Mastering Regular Expressions</em>. 3rd ed. Sebastapol, CA: O’Reilly. <a href="http://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/">Amazon Link</a></li>
-</ul>
+  
+  <!--- Share on Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2019-04-29-lesson06/"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fa fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
 
-<h1 id="homework">Homework:</h1>
+  
 
-<ol>
-  <li>Finish the practicum; make a blogpost on your website with the answers.</li>
-  <li>Codecademy’s <em>Learn Python</em>, Unit 5-6</li>
-  <li>Github: publish the confirmation screenshot as a post on your new site.</li>
-</ol>
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2019-04-29-lesson06/"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
 
-	    
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2019-04-08-lesson05/" data-toggle="tooltip" data-placement="top" title="L05 Georeferencing with QGIS">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2019-05-06-lesson07/" data-toggle="tooltip" data-placement="top" title="L07 Webscraping">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
         <div class="disqus-comments">
-	        <div class="comments">
+          <div class="comments">
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'univie-tnt-2019';
@@ -460,12 +472,12 @@
     <script id="dsq-count-scr" src="//univie-tnt-2019.disqus.com/count.js" async></script>
 </div>
         </div>
-	        
+          
         <div class="staticman-comments">
           
 
         </div>
-	    
+      
     </div>
   </div>
 </div>

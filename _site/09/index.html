@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-  <title>Structuring Data</title>
+  <title>L09 Structuring Data</title>
 
   <meta name="author" content="Students of the Class" />
 
@@ -60,7 +60,7 @@
   
 
   
-  <meta property="og:title" content="Structuring Data" />
+  <meta property="og:title" content="L09 Structuring Data" />
   
 
    
@@ -86,7 +86,7 @@
   <meta name="twitter:creator" content="@" />
 
   
-  <meta name="twitter:title" content="Structuring Data" />
+  <meta name="twitter:title" content="L09 Structuring Data" />
   
 
   
@@ -349,7 +349,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-heading">
-          <h1>Structuring Data</h1>
+          <h1>L09 Structuring Data</h1>
 		  
 		    
             <hr class="small">
@@ -394,7 +394,7 @@
 
 <p>The ease of editing, suitability for analytical software, human-friendliness and  readability, open vs. proprietary.</p>
 
-<h3 id="xml">XML</h3>
+<h3 id="xml-extensible-markup-language">XML (<em>Extensible Markup Language</em>)</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;note&gt;</span>
   <span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
@@ -404,13 +404,13 @@
 <span class="nt">&lt;/note&gt;</span>
 </code></pre></div></div>
 
-<h3 id="csvtsv">CSV/TSV</h3>
+<h3 id="csvtsv-comma-separated-values-tab-separated-values">CSV/TSV (<em>Comma-Separated Values</em>/ <em>Tab-Separated Values</em>)</h3>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to,from,heading,body
 Tove,Jani,Reminder,Don't forget me this weekend!
 </code></pre></div></div>
 
-<h3 id="json">JSON</h3>
+<h3 id="json-javascript-object-notation">JSON (<em>JavaScript Object Notation</em>)</h3>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tove"</span><span class="p">,</span><span class="w">
@@ -420,7 +420,7 @@ Tove,Jani,Reminder,Don't forget me this weekend!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h3 id="yml">YML</h3>
+<h3 id="yml-or-yaml-yet-another-markup-language--yaml-aint-markup-language">YML or YAML (<em>Yet Another Markup Language</em> &gt; <em>YAML Ain’t Markup Language</em>)</h3>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to: Tove
 from: Jani
@@ -448,7 +448,7 @@ Philadelphia,2.6%,39.9525839,-75.1652215,1553165,5,Pennsylvania
 
 <p>Neither <code class="highlighter-rouge">TSV</code> not <code class="highlighter-rouge">CSV</code> are good for preserving <em>new line characters</em> (<code class="highlighter-rouge">\n</code>)—or, in other words, text split into multiple lines. As a workaround, one can convert <code class="highlighter-rouge">\n</code> into some unlikely-to-occur character combination (for example, <code class="highlighter-rouge">;;;</code>), which would allow to restore <code class="highlighter-rouge">\n</code> later , if necessary.</p>
 
-<h3 id="json-1"><code class="highlighter-rouge">JSON</code></h3>
+<h3 id="json"><code class="highlighter-rouge">JSON</code></h3>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -499,62 +499,65 @@ Philadelphia,2.6%,39.9525839,-75.1652215,1553165,5,Pennsylvania
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div></div>
 
-<h3 id="yml-not-a-serial-format"><code class="highlighter-rouge">YML</code> (<em>not a serial format</em>)</h3>
+<h3 id="ymlyaml"><code class="highlighter-rouge">YML</code>/<code class="highlighter-rouge">YAML</code></h3>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="na">city</span><span class="pi">:</span> <span class="s">New York</span> 
+<p>YAML is often used only for a single set of parameters.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">city</span><span class="pi">:</span> <span class="s">New York</span> 
 <span class="na">growth_from_2000_to_2013</span><span class="pi">:</span> <span class="s">4.8%</span> 
 <span class="na">latitude</span><span class="pi">:</span> <span class="s">40.7127837</span> 
 <span class="na">longitude</span><span class="pi">:</span> <span class="s">-74.0059413</span>
 <span class="na">population</span><span class="pi">:</span> <span class="s">8405837</span> 
 <span class="na">rank</span><span class="pi">:</span> <span class="s">1</span> 
 <span class="na">state</span><span class="pi">:</span> <span class="s">New York</span>
-
 </code></pre></div></div>
 
-<h3 id="misc-yaml-like-custom-format">Misc: YAML-like custom format</h3>
+<p>But it can also be used for storage of serialized data. It has advantages of both JSON and CSV: the overall simplicity of the format (no tricky syntax) is similar to that of CSV/TSV, but it is more readable than CSV/TSV in any text editor, and is more difficult to break—again, due to the simplicity of the format.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#ITEM###############################
-city: New York 
-growth_from_2000_to_2013: 4.8% 
-latitude: 40.7127837 
-longitude: -74.0059413 
-population: 8405837 
-rank: 1 
-state: New York 
-#ITEM###############################
-city: Los Angeles 
-growth_from_2000_to_2013: 4.8% 
-latitude: 34.0522342 
-longitude: -118.2436849 
-population: 3884307 
-rank: 2 
-state: California
-#ITEM###############################
-city: Chicago 
-growth_from_2000_to_2013: -6.1% 
-latitude: 41.8781136 
-longitude: -87.6297982 
-population: 2718782 
-rank: 3 
-state: Illinois
-#ITEM###############################
-city: Houston 
-growth_from_2000_to_2013: 11.0% 
-latitude: 29.7604267 
-longitude: -95.3698028 
-population: 2195914 
-rank: 4 
-state: Texas
-#ITEM###############################
-city: Philadelphia 
-growth_from_2000_to_2013: 2.6% 
-latitude: 39.9525839 
-longitude: -75.1652215 
-population: 1553165 
-rank: 5 
-state: Pennsylvania
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New York:
+  growth_from_2000_to_2013: 4.8% 
+  latitude: 40.7127837 
+  longitude: -74.0059413 
+  population: 8405837 
+  rank: 1 
+  state: New York 
+Los Angeles:
+  growth_from_2000_to_2013: 4.8% 
+  latitude: 34.0522342 
+  longitude: -118.2436849 
+  population: 3884307 
+  rank: 2 
+  state: California
+Chicago:
+  growth_from_2000_to_2013: -6.1% 
+  latitude: 41.8781136 
+  longitude: -87.6297982 
+  population: 2718782 
+  rank: 3 
+  state: Illinois
+Houston:
+  growth_from_2000_to_2013: 11.0% 
+  latitude: 29.7604267 
+  longitude: -95.3698028 
+  population: 2195914 
+  rank: 4 
+  state: Texas
+Philadelphia:
+  growth_from_2000_to_2013: 2.6% 
+  latitude: 39.9525839 
+  longitude: -75.1652215 
+  population: 1553165 
+  rank: 5 
+  state: Pennsylvania
 </code></pre></div></div>
+
+<p>YAML files can be read with Python into <code class="highlighter-rouge">dictionaries</code> like so:</p>
+
+<pre><code class="language-{python}">import yaml
+dictionary = yaml.load(open(pathToFile))
+</code></pre>
+
+<p>You will most likely need to install <code class="highlighter-rouge">yaml</code> library; it is also quite easy to write a script that would read such serialized data.</p>
 
 <h1 id="reference-materials">Reference Materials:</h1>
 
@@ -579,6 +582,81 @@ state: Pennsylvania
   <li>Github: publish the confirmation screenshot as a post on your new site.</li>
 </ol>
 
+<h1 id="homework-solution">Homework solution</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span><span class="p">,</span> <span class="n">os</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="s">"path_where_initial_files_are"</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s">"path_to_save_new_files"</span>
+
+<span class="n">lof</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># general counter to keep track of the progress</span>
+
+<span class="n">ourCSV</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">lof</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"dltext"</span><span class="p">):</span> <span class="c"># fileName test        </span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source</span> <span class="o">+</span> <span class="n">f</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+            <span class="c"># try to find the date</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'&lt;date value="([\d-]+)"'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c"># splitting the issue into articles/items</span>
+            <span class="n">split</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"&lt;div3 "</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># item counter</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="s">"&lt;div3 "</span> <span class="o">+</span> <span class="n">s</span> <span class="c"># a step to restore the integrity of items</span>
+                <span class="c">#input(s)</span>
+
+                <span class="c"># try to find a unitType</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">unitType</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'type="([^\"]+)"'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">unitType</span> <span class="o">=</span> <span class="s">"noType"</span>
+                    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+                <span class="c"># try to find a header</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'&lt;head&gt;(.*)&lt;/head&gt;'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"&lt;[^&lt;]+&gt;"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">header</span> <span class="o">=</span> <span class="s">"NO HEADER"</span>
+                    <span class="c">#print("No header found!")</span>
+
+                <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"&lt;[^&lt;]+&gt;"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">" +</span><span class="se">\n</span><span class="s">|</span><span class="se">\n</span><span class="s"> +"</span><span class="p">,</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">+"</span><span class="p">,</span> <span class="s">";;; "</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+                <span class="c"># generating necessary bits </span>
+                <span class="n">fName</span> <span class="o">=</span> <span class="n">date</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="n">unitType</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+                <span class="n">itemID</span> <span class="o">=</span> <span class="n">date</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="n">unitType</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                <span class="n">dateVar</span>   <span class="o">=</span> <span class="n">date</span>
+                <span class="c">#unitType = unitType</span>
+                <span class="c">#header = header</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
+
+                <span class="c"># creating a text variable</span>
+                <span class="n">var</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">itemID</span><span class="p">,</span><span class="n">dateVar</span><span class="p">,</span><span class="n">unitType</span><span class="p">,</span><span class="n">header</span><span class="p">,</span><span class="n">text</span><span class="p">])</span>
+                <span class="c">#input(var)</span>
+
+                <span class="n">ourCSV</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
+
+        <span class="c"># count processed issues and print progress counter at every 100        </span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">counter</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+
+<span class="c"># saving</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"dispatch_as_TSV.csv"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f9</span><span class="p">:</span>
+    <span class="n">f9</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ourCSV</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+
+</code></pre></div></div>
 
 	    
         <div class="disqus-comments">
